@@ -103,3 +103,8 @@ Commit changes
 git commit -m "Added apple to fruits"
 git status
 ```
+
+Checking logs
+```
+git log
+```
