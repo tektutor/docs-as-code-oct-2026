@@ -205,3 +205,27 @@ git commit -m "Resolve merge conflicts in dev-1.0 branch"
 git status
 git log
 ```
+
+## Lab - GitHub commands
+
+Cloning a remote repository to your local machine ( this is done only the first time )
+```
+cd ~
+git clone https://github.com/tektutor/docs-as-code-oct-2026.git
+cd docs-as-code-oct-2026
+tree
+```
+
+Getting only delta change from remote to local repo
+```
+cd ~
+cd docs-as-code-oct-2026
+git pull
+```
+
+Delete a file from the local git repo and from local file system
+```
+cd ~
+cd docs-as-code-oct-2026
+git rm Day1/testing
+```
