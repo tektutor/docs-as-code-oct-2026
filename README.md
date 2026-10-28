@@ -16,7 +16,7 @@ You can use it to:
 - Keep a reference on your desk when you set up Docs-as-Code and Codebeamer at work
 
 #### Price
-
+**Pages:** 574
 **Rs. 3,500** per copy
 
 #### How to order
