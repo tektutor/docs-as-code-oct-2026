@@ -42,3 +42,16 @@ git config --global user.email
 ```
 
 <img width="1966" height="1191" alt="image" src="https://github.com/user-attachments/assets/8ff04f27-7460-4f5e-b04c-1ec45589fa06" />
+
+Change or remote a setting
+```
+git config --global --unset core.editor
+git config --global --edit
+```
+
+Git supports 3 levels
+<pre>
+- System - stores in /etc/gitconfig for system wide configurations for all users in that server
+- Global - stores globally for a single user in ~/.gitconfig
+- Local  - is the default and stores under .git/config  
+</pre>
