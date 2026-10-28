@@ -229,3 +229,22 @@ cd ~
 cd docs-as-code-oct-2026
 git rm Day1/testing
 ```
+
+## Info - Git pull vs fetch
+
+Note
+<pre>
+- Let's assume there are 2 engineers in a team Deepa and Shankar.
+- Shankar pushed a new commit to main and a new branch
+- Deepa downloads his work with get fetch and can verify before merging
+- Git pull does the below
+  1. Download Shankar's work, without changing Deepa's files
+  2. Check how far behind you are
+  3. See which commits arrived
+  4. See What changed in the files
+  5. Take the changes into your branch, once you are happy with them
+  6. Work on the new branch pushed by Shankar
+- Git fetch
+  - Git pull runs steps 1 to 5 in one go, i.e fetch and merge right away
+  - Git fetch stops after step 1 so you can review steps 2 to 4 first 
+</pre>
