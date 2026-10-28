@@ -9,7 +9,7 @@
   - Ubuntu
   - Fedora
   - Red Hat Linux
-- under the hood it depends on LaTex
+- under the hood it depends on LaTex and many other tools like Pandoc, PlantUML, etc.,
 </pre>
 
 ## Info - Git Overview
