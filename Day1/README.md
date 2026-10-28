@@ -264,3 +264,24 @@ Note
 - it is a declarative way to create a document
 </pre>
 
+## Lab - Generating html from reST markup file
+
+Clone the TekTutor Training Repo if you haven't done it already
+```
+cd ~
+git clone https://github.com/tektutor/docs-as-code-oct-2026.git
+cd docs-as-code-oct-2026
+```
+
+Navigate to Day1 
+```
+cd ~/docs-as-code-oct-2026
+git pull
+cd reST
+cat headings.rst
+source ~/dac-venv/bin/activate
+rst2html5 headings.rst headings.html
+firefox headings.html &
+```
+<img width="1970" height="1218" alt="image" src="https://github.com/user-attachments/assets/5778aa18-15f8-44e0-8ca3-fddd3949dea7" />
+
