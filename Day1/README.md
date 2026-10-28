@@ -108,3 +108,4 @@ Checking logs
 ```
 git log
 ```
+<img width="1970" height="1218" alt="image" src="https://github.com/user-attachments/assets/03a09d20-ccac-44e9-aee0-0bc2c654bf25" />
