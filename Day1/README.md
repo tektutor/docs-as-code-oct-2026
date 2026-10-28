@@ -253,3 +253,14 @@ Note
   - Git pull runs steps 1 to 5 in one go, i.e fetch and merge right away
   - Git fetch stops after step 1 so you can review steps 2 to 4 first 
 </pre>
+
+
+## Info - Sphinx
+<pre>
+- Sphinx is a document generator via Code
+- reST - restructured text is the markup language Sphinx reads
+- the file extension for reST is .rst, it is a text file that will be parsed by Sphinx tool to generate html, pdf, etc.,
+- it can help you generate documents via Code
+- it is a declarative way to create a document
+</pre>
+
