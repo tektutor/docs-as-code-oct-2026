@@ -1,5 +1,10 @@
 # Day 1
 
+## Info - For detailed Git & GitHub reference, check my public repo on GitHub
+<pre>
+https://github.com/tektutor/git-us-june2023-batch1.git
+</pre>  
+
 ## Info - Docs as Code
 <pre>
 - Sphinx is a tool developed by Python community as an open source tool
