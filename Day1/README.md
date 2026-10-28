@@ -9,6 +9,7 @@
   - Ubuntu
   - Fedora
   - Red Hat Linux
+  - SUSE Linux
 - under the hood it depends on LaTex
 </pre>
 
