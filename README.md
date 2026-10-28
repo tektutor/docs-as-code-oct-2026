@@ -17,6 +17,7 @@ You can use it to:
 
 #### Price
 **Pages:** 574
+
 **Rs. 3,500** per copy
 
 #### How to order
