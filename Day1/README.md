@@ -264,3 +264,57 @@ Note
 - it is a declarative way to create a document
 </pre>
 
+## Lab - Generating html from reST markup file
+
+Clone the TekTutor Training Repo if you haven't done it already
+```
+cd ~
+git clone https://github.com/tektutor/docs-as-code-oct-2026.git
+cd docs-as-code-oct-2026
+```
+
+Navigate to Day1 
+```
+cd ~/docs-as-code-oct-2026
+git pull
+cd reST
+cat headings.rst
+source ~/dac-venv/bin/activate
+rst2html5 headings.rst headings.html
+firefox headings.html &
+```
+<img width="1970" height="1218" alt="image" src="https://github.com/user-attachments/assets/5778aa18-15f8-44e0-8ca3-fddd3949dea7" />
+
+
+## Lab - Sphinx List
+Create a file named list.rst with below content
+<pre>
+* A bullet item
+* Another item
+
+  * A nested item. Note the blank line above adn the two-space indent.
+
+1. First step
+2. Second step
+3. Third step
+
+#. Auto-numbered step
+#. Sphinx counts for you
+</pre>
+
+Generate html from reST markup 
+```
+rst2html5 list.rst list.html
+```
+<img width="1970" height="1218" alt="image" src="https://github.com/user-attachments/assets/d892c0d9-a028-45c0-9118-80d168f1990f" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/5b3d051b-a5e2-4e87-96e4-1643923814c3" />
+
+## Lab - Sphinx directive
+
+Note
+<pre>
+- Sphinx reST directive is a block command
+- Used for images, tables, toctree, etc.,
+- Every directive follows the same syntax(format)
+  - two dots, a space, the name, and two colons forms a directive
+</pre>
