@@ -12,6 +12,20 @@
 - under the hood it depends on LaTex
 </pre>
 
+## Info - Git Overview
+<pre>
+- Git is an open source version control software developed by Linus Torvalds
+- Almost the entire IT industry today uses some form of Git version control
+  - example
+    - GitHub
+    - GitLab
+    - BitBucket, etc.,
+  - GitHub, GitLab, BitBucket are version control software that is developed
+    on top of Git command-line tool
+  - These servers acts as a remote repository with Webconsole (GUI) with some
+    differentiating features
+</pre>
+
 ## Lab - Git
 
 Creating a git repository locally
