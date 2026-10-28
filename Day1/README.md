@@ -55,3 +55,51 @@ Git supports 3 levels
 - Global - stores globally for a single user in ~/.gitconfig
 - Local  - is the default and stores under .git/config  
 </pre>
+
+
+## Lab - Adding new files to the local git repo, stage and commit
+Navigate to your local git repo
+```
+cd ~/git-demo
+git status
+```
+
+Add a new file 
+```
+cd ~/git-demo
+touch fruits
+```
+
+Check the current status of the repo
+```
+git status
+```
+
+Anything you wish to commit must be staged first. Hence, let's stage the file
+```
+git add fruits.txt
+git status
+```
+
+Committing your changes in the staging area
+```
+git commit -m "Initial commit."
+git status
+```
+
+Modify the file
+```
+echo "Apple" > fruits.txt
+git status
+```
+
+Stage the changes done to the file
+```
+git add fruits.txt
+```
+
+Commit changes
+```
+git commit -m "Added apple to fruits"
+git status
+```
