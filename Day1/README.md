@@ -309,7 +309,7 @@ rst2html5 list.rst list.html
 <img width="1970" height="1218" alt="image" src="https://github.com/user-attachments/assets/d892c0d9-a028-45c0-9118-80d168f1990f" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/5b3d051b-a5e2-4e87-96e4-1643923814c3" />
 
-## Lab - Sphinx directive
+## Lab - Sphinx directive - Creating a table using table directive
 
 Note
 <pre>
@@ -318,3 +318,17 @@ Note
 - Every directive follows the same syntax(format)
   - two dots, a space, the name, and two colons forms a directive
 </pre>
+
+```
+cd ~/docs-as-code-oct-2026
+git pull
+cd reST
+cat headings.rst
+source ~/dac-venv/bin/activate
+rst2html5 table.rst table.html
+firefox table.html &
+```
+
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/e80e2049-27f3-4bc8-bf88-c4b209bf709a" />
+
+
