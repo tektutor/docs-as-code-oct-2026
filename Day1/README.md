@@ -109,3 +109,33 @@ Checking logs
 git log
 ```
 <img width="1970" height="1218" alt="image" src="https://github.com/user-attachments/assets/03a09d20-ccac-44e9-aee0-0bc2c654bf25" />
+
+## Lab - Git branch
+
+Note
+<pre>
+- Branches are considered a basic feature in Git or Git variant version controls unlike the classic older version controls
+  like Perforce, ClearCase, CVS, etc.,
+- Branches are not copies in case of git, github or git variants
+</pre>
+
+Listing all the branches in a git repo
+```
+git branch
+```
+
+Creating a new branch from main branch
+```
+git checkout -c dev-1.0
+git branch
+```
+
+Switching between branches
+```
+git checkout main
+git branch
+
+git checkout dev-1.0
+git branch
+```
+
