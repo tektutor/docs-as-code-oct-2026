@@ -1,5 +1,10 @@
 # Day 1
 
+## Info - For detailed Git & GitHub reference, check my public repo on GitHub
+<pre>
+https://github.com/tektutor/git-us-june2023-batch1.git
+</pre>  
+
 ## Info - Docs as Code
 <pre>
 - Sphinx is a tool developed by Python community as an open source tool
@@ -205,3 +210,57 @@ git commit -m "Resolve merge conflicts in dev-1.0 branch"
 git status
 git log
 ```
+
+## Lab - GitHub commands
+
+Cloning a remote repository to your local machine ( this is done only the first time )
+```
+cd ~
+git clone https://github.com/tektutor/docs-as-code-oct-2026.git
+cd docs-as-code-oct-2026
+tree
+```
+
+Getting only delta change from remote to local repo
+```
+cd ~
+cd docs-as-code-oct-2026
+git pull
+```
+
+Delete a file from the local git repo and from local file system
+```
+cd ~
+cd docs-as-code-oct-2026
+git rm Day1/testing
+```
+
+## Info - Git pull vs fetch
+
+Note
+<pre>
+- Let's assume there are 2 engineers in a team Deepa and Shankar.
+- Shankar pushed a new commit to main and a new branch
+- Deepa downloads his work with get fetch and can verify before merging
+- Git pull does the below
+  1. Download Shankar's work, without changing Deepa's files
+  2. Check how far behind you are
+  3. See which commits arrived
+  4. See What changed in the files
+  5. Take the changes into your branch, once you are happy with them
+  6. Work on the new branch pushed by Shankar
+- Git fetch
+  - Git pull runs steps 1 to 5 in one go, i.e fetch and merge right away
+  - Git fetch stops after step 1 so you can review steps 2 to 4 first 
+</pre>
+
+
+## Info - Sphinx
+<pre>
+- Sphinx is a document generator via Code
+- reST - restructured text is the markup language Sphinx reads
+- the file extension for reST is .rst, it is a text file that will be parsed by Sphinx tool to generate html, pdf, etc.,
+- it can help you generate documents via Code
+- it is a declarative way to create a document
+</pre>
+
