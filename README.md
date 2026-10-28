@@ -1,5 +1,8 @@
 # docs-as-code-oct-2026
 
+## Info - This course is based on my book
+![book](my-dac-book.jpeg)
+
 ## Info - Check if all the tools required are installed
 ```
 cd ~/dac-labs
