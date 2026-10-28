@@ -139,3 +139,53 @@ git checkout dev-1.0
 git branch
 ```
 
+
+Let's switch to dev-1.0 branch and make some changes
+```
+git checkout dev-1.0
+echo "Mango" >> fruits.txt
+git commit -a -m "Added Mango in dev-1.0 branch"
+git log
+git status
+```
+
+Let's switch back to main branch and see if those changes done in dev-1.0 are visible
+```
+git checkout main
+
+# You will notice that the changes done in dev-1.0 are not visible in main branch
+cat fruits.txt
+```
+
+Let's make some changes in main branch
+```
+echo "Orange" >> fruits.txt
+git commit -a -m "Added Orange in main branch"
+git log
+```
+
+Let's switch to dev-1.0 and see if the changes done in main branch are visible there
+```
+git checkout dev-1.0
+
+# You will notice that the changes done in main are not visible in dev-1.0
+cat fruits.txt 
+```
+
+Let's merge the changes done in main branch to the dev-1.0 branch
+```
+# First switch to the destination branch i.e dev-1.0 branch
+git checkout dev-1.0
+git branch
+git merge main
+
+# At this point, merge will create some conflicts that must be manually resolved, so edit the fruits.txt
+# and resolve the merge conflicts
+cat fruits.txt
+
+# Stage the merge resolution
+git add *
+git commit -m "Resolve merge conflicts in dev-1.0 branch"
+git status
+git log
+```
