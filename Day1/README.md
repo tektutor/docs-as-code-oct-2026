@@ -23,6 +23,62 @@ Who uses it?
   Sphinx-Needs.
 </pre>
 
+## Info - Sphinx Overview
+<pre>
+- Sphinx was written for one job
+  - building the documentation of the Python language itself
+
+-  The problem (1990s to 2007)
+   - The Python manuals were written in LaTeX, and a program called latex2html turned them into web pages.
+   - To fix even a typo, you had to know LaTeX, install a TeX system and wait for a slow conversion.
+   - Python developers wrote plain text every day, yet the manual for their own language was the 
+     hardest file in the project to edit.
+
+- The markup comes first
+  - reStructuredText and Docutils
+
+1996: the Zope web server ships StructuredText, a simple plain-text markup.
+1999: David Goodger, a Python developer, starts reworking StructuredText.
+November 2000: he publishes the first reStructuredText specification.
+April 2002: his project is renamed Docutils. PEP 287 proposes reST as the standard format for Python docstrings.
+
+- Docutils turns one reST file into one HTML page. 
+- A manual needs much more
+  - hundreds of linked pages
+  - an index
+  - search
+  - and a printed version
+
+- Sphinx is born (2007 to 2008)
+- Georg Brandl, a Python core developer, converts the whole Python manual from LaTeX to reST 
+  and writes a tool to build it. That tool is Sphinx.
+- 21 March 2008: he releases Sphinx 0.1 to everyone. Its first user is the new documentation for Python 2.6 and 3.0.
+- October 2008: Python 2.6 ships with a manual built by Sphinx. Every Python manual since then has been built the same way.
+
+- It spreads beyond Python
+- Django, SQLAlchemy and SciPy move to Sphinx, because they have the same problem
+  - a large manual
+  - written by programmers
+  - kept next to the code
+
+- August 2010
+  - Eric Holscher and two friends build Read the Docs in 48 hours at the Django Dash competition. 
+  - It rebuilds a project’s Sphinx documentation on every push to GitHub. 
+  - Documentation that rebuilds on every commit is the core idea of Docs-as-Code.
+- 2016: the Linux kernel starts moving its documentation from DocBook to Sphinx and reST.
+
+- Today
+  - Thousands of projects build their documentation with Sphinx, including Python, the Linux kernel and Zephyr RTOS.
+  - Extensions add what the core doesn’t do: autodoc and Breathe for API reference, and SphinxNeeds for 
+    requirements and traceability. Eclipse S-CORE, an automotive project, uses SphinxNeeds.
+
+- Two things from this history that explain how Sphinx works today
+  - Sphinx was built for hand-written manuals, not for API listings. 
+  - That’s why API documentation comes from extensions such as autodoc and Breathe.
+- Sphinx was built for many authors. That’s why it cares so much about cross-references and warnings. 
+  In a manual with thousands of links, a broken link must stop the build (-W) instead of hiding in the output.
+</pre>
+
 ## Info - Git Overview
 <pre>
 - Git is an open source version control software developed by Linus Torvalds
