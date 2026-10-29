@@ -1,5 +1,8 @@
 # Day 1
 
+## Info - This course is based on the book
+![book](../Day1/book.png)
+
 ## Info - For detailed Git & GitHub reference, check my public repo on GitHub
 <pre>
 https://github.com/tektutor/git-us-june2023-batch1.git
