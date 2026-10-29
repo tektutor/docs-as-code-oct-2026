@@ -1,0 +1,22 @@
+== Safety document
+
+WARNING: The battery pack stores enough energy to cause burns and fire.
+Only a trained technician may open it.
+
+Before you work on the pack:
+
+. Switch off the scooter and remove the key.
+. Wait {wait-minutes} minutes, so the capacitors in the motor controller discharge.
+. Measure the pack voltage at the main connector.
+It must be below 60 V before you touch any part inside the pack.
+. Wear insulated gloves rated for at least 1000 V.
+
+[[safety-faults]]
+=== Faults that need a technician
+
+[cols="1,3", options="header"]
+|===
+| Fault code | What to do 
+| F012 | Cell over-voltage. Do not charge. Read the cell voltages with the diagnostic tool.
+| F013 | Cell under-voltage. Charge slowly at 1 A, then read the cell voltages agin.
+|===

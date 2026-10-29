@@ -1,0 +1,34 @@
+= BMS Operator Manual
+Jeganathan Swaminathan <jegan@tektutor.org>
+:toc:
+:cells: 13
+:wait-minutes: 10
+
+== Cell monitoring
+ 
+The BMS reads all {cells} cell voltages every *100 ms*.
+The limits are in <<limits>>.
+
+NOTE: Read the safety chapter before you open the battery pack.
+
+[[limits]]
+=== Voltage limits
+
+[col="2,1,1", options="header"]
+|===
+| Limit | Value | Fault code
+| Cell over-voltage | 4.25 V | F012
+| Cell under-voltage | 2.89 V | F013
+|===
+
+. Switch off the schooter.
+. Connect the diagnostic tool.
+.. Select *Read faults*.
+
+[source, bash]
+
+----
+bmstool log --cell 9
+----
+
+include::safety.adoc[]
