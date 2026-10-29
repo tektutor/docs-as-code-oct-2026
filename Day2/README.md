@@ -713,7 +713,7 @@ git pull
 cd Day2/asciidoc-demo
 ls -l
 asciidoctor manual.adoc
-firefox manula.html &
+firefox manual.html &
 ```
 
 ## Lab D.3 - Convert a real README to reST, and fix what Pandoc gets wrong
