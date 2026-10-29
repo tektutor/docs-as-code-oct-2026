@@ -4,11 +4,6 @@
 
 Docs-as-Code and PTC Codebeamer ALM, by Jeganathan Swaminathan (TekTutor Press)
 
-This page lists the steps, files, and commands of each lab. The book explains every step, every option, and every error message.
-
-- Copy each command as it is. Lines in `bash` blocks are commands; type them in order.
-- `# fails on purpose` marks a command that must fail. Read its error, then go on.
-- In Lab D.1b, `# Asha's window` and `# Ravi's window` say which terminal to use.
 
 ## Today's agenda
 
