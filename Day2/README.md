@@ -8,6 +8,54 @@ This page lists the steps, files, and commands of each lab. The book explains ev
 - `# fails on purpose` marks a command that must fail. Read its error, then go on.
 - In Lab D.1b, `# Asha's window` and `# Ravi's window` say which terminal to use.
 
+## Today's agenda
+
+### 1. Writing for Git: AsciiDoc, PlantUML, and best practices
+
+- AsciiDoc overview
+- PlantUML overview: sequence, class, component, state, and deployment diagrams
+- Best practices: one sentence per line for clean diffs, semantic line breaks, diagrams as text instead of binary images
+- Hands-on: a reST page with a table, a cross-reference, and a PlantUML diagram (Lab D.2)
+- Hands-on: convert a real README to reST (Lab D.3)
+- Hands-on: two writers on one repository (Labs D.1 and D.1b)
+- Hands-on: sequence, state, component, and deployment diagrams, one shared style, and a diagram generated from data (Labs D.6 to D.10)
+- Hands-on: rewrite the same page in AsciiDoc (Labs D.4 and D.5)
+
+### 2. Sphinx fundamentals
+
+- Project anatomy: `conf.py`, `index.rst`, `toctree`, `_static`, `_build`
+- Building HTML and PDF output
+- Switching themes and configuring extensions
+- Cross-referencing and labels
+- Hands-on: build a Sphinx project with `sphinx-quickstart`, break and fix a build in strict mode (Lab D.11)
+- Hands-on: one source for two products (Lab D.12), and real code in the docs (Lab D.13)
+- Hands-on: switch themes between `sphinx-rtd-theme` and Furo (Lab D.14)
+- Hands-on: generate PDF output from the same source (Lab D.15)
+
+### 3. SphinxNeeds
+
+- Typed need objects: requirements, specifications, test cases
+- Core directives: `req`, `spec`, `test` with IDs, status, and tags
+- Linking needs for traceability
+- Filtering and visualization: `needtable`, `needflow`, `needpie`, `needlist`
+- Hands-on: add requirements, specifications, and tests, link them, and draw the traceability graph (Lab D.16)
+- Hands-on: rules that stop the build when a need is incomplete (Lab D.17)
+
+### 4. SphinxNeeds for real work
+
+- Full traceability matrix from requirement to test
+- Status roll-ups and coverage gaps
+- Linking needs to source files and test results
+- Hands-on: real test results in the documentation (Lab D.18)
+- Hands-on: a coverage view that flags requirements without tests (Lab D.19)
+
+### 5. Continuous integration for documentation
+
+- Automated builds, testing, and deployment for docs
+- What testing means for docs: strict build, link check, spell check
+- Deployment targets: GitHub Pages, internal server, build artifact
+- Hands-on: make a build fail on a broken reference, add spell checking with a project word list, and check the GitHub Actions workflow (Lab D.20)
+
 ## Before you start
 
 ```bash
