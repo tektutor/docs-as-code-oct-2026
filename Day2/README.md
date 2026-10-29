@@ -1,5 +1,7 @@
 # Day 2: deep-dive labs
 
+<img src="../Day1/book.png" alt="Docs-as-Code and PTC Codebeamer ALM book cover" width="180" align="right">
+
 Docs-as-Code and PTC Codebeamer ALM, by Jeganathan Swaminathan (TekTutor Press)
 
 This page lists the steps, files, and commands of each lab. The book explains every step, every option, and every error message.
