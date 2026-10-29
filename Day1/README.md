@@ -5,18 +5,22 @@
 https://github.com/tektutor/git-us-june2023-batch1.git
 </pre>  
 
-## Info - Docs as Code
+## Info - What is Docs as Code?
 <pre>
-- Sphinx is a tool developed by Python community as an open source tool
-- to generate Python documentation
-- today Docs as Code is used by Linux Kernel, Linux Distros, Python, Automotive Industry & Semi-conductor industry
-- it is supported in all Linux distributions
-  - Ubuntu
-  - Fedora
-  - Red Hat Linux
-  - SUSE Linux
-- under the hood it depends on LaTex
-- under the hood it depends on LaTex and many other tools like Pandoc, PlantUML, etc.,
+- You treat documentation the way you treat source code.
+- You write it in plain text (reStructuredText or Markdown)
+- keep it in Git next to the code, review every change in a pull request, 
+  and let a CI pipeline build it. 
+- The pipeline stops broken links, untested requirements and spelling errors 
+  before they reach the main branch.
+
+Who uses it?
+- The Linux kernel moved its documentation to Sphinx in 2016.
+- Python and the Zephyr RTOS build their documentation with Sphinx.
+- GitLab and Microsoft Learn keep their product documentation in Git 
+  and accept changes as merge and pull requests.
+- In automotive, the Eclipse S-CORE project manages requirements as text with 
+  Sphinx-Needs.
 </pre>
 
 ## Info - Git Overview
