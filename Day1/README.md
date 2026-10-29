@@ -33,7 +33,7 @@ Who uses it?
 
 ## Info - What an ALM tool manages
 <pre>
-Requirements - ustomer requirements, system requirements, software requirements
+Requirements - customer requirements, system requirements, software requirements
 Design and architecture - components, interfaces, design decisions
 Risk and safety - hazards, FMEA items, safety goals
 Tests - test cases, test runs, results
