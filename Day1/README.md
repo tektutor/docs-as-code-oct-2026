@@ -396,6 +396,7 @@ Create a file named list.rst with below content
 Generate html from reST markup 
 ```
 rst2html5 list.rst list.html
+firefox list.html &
 ```
 <img width="1970" height="1218" alt="image" src="https://github.com/user-attachments/assets/d892c0d9-a028-45c0-9118-80d168f1990f" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/5b3d051b-a5e2-4e87-96e4-1643923814c3" />
