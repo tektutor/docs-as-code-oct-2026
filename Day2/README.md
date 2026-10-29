@@ -705,6 +705,17 @@ Hints:
 - `:numref:` can link to a table on another page. The label is enough, you do not need the page name.
 - Think about which number the new table gets, and which numbers change.
 
+
+## Lab - Getting familiar with asciidoc
+```
+cd ~/docs-as-code-oct-2026
+git pull
+cd Day2/asciidoc-demo
+ls -l
+asciidoctor manual.adoc
+firefox manula.html &
+```
+
 ## Lab D.3 - Convert a real README to reST, and fix what Pandoc gets wrong
 
 **You build:** A small Sphinx site `readme-site` built from a converted and corrected README.
