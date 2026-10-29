@@ -1,0 +1,23 @@
+@startuml
+
+title Exercise 2: Read cell voltages.
+
+actor Technician
+participant "Diagnostic tool" as Tool
+participant "BMS" as BMS
+participant "Cell monitor (AFE)" as AFE
+
+Technician -> Tool: Request cell voltages
+activate Tool
+Tool -> BMS : Read cell voltages
+activate BMS
+BMS -> AFE : Measure all 13 cells
+activate AFE
+
+AFE --> BMS : 13 voltages
+deactivate AFE
+BMS --> Tool : 13 voltages
+deactivate BMS
+Tool --> Technician : Show table
+deactivate Tool
+@enduml

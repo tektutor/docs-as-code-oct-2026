@@ -1,0 +1,13 @@
+@startuml
+title Exercise 1: BMS start-up check
+
+participant "Vehicle ECU" as ECU
+participant "BMS" as BMS
+
+ECU -> BMS : Wake up request
+BMS -> BMS : Run self-test
+
+BMS --> ECU: Self-test passed
+
+
+@enduml

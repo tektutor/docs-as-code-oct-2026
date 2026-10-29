@@ -1279,6 +1279,17 @@ cd ~/dac-labs/deep/plantuml
 source ~/dac-venv/bin/activate
 ```
 
+## Info - PlantUML
+<pre>
+- Using PlantUML opensource tool, we can draw different types of UML diagrams
+- which includes
+  - Sequence diagrams
+  - Use case diagrams
+  - Class Diagrams
+  - Activity Diagrams
+  - Component Diagrams
+</pre>
+
 ## Lab D.6 - Draw the CAN start-up handshake
 
 **You build:** `d6/startup.puml`, the full start-up handshake between the vehicle ECU, the dashboard, the BMS, and the cell monitor, plus a fault case.

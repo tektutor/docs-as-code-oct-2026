@@ -1,0 +1,28 @@
+@startuml
+
+title Exercise 3: Precharge with a timeout
+
+participant "Vehicle ECU" as ECU
+participant "BMS" as BMS
+participant "Precharge relay" as PRE
+participant "Main contactor" as MAIN
+
+ECU -> BMS : Close contactor
+BMS -> PRE : Close
+
+loop every 10 ms, at most 300 ms
+    BMS -> BMS : Measure bus voltage
+end
+
+alt bus voltage reached 95% of pack voltage
+    BMS -> MAIN : Close
+    BMS -> PRE : Open
+    BMS --> ECU : Contactor closed
+else
+    BMS -> PRE: Open
+    BMS --> ECU : Precharge fault
+end
+
+note right of BMS : Requirement REQ_004
+
+@enduml
