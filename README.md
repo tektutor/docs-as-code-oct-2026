@@ -23,7 +23,7 @@ You can use it to:
 #### How to order
 
 - **Single copy:** Message me on WhatsApp at **+91 822-000-5626**. You order directly from me.
-- **Bulk orders for your team:** Email **jegan@tektutor.org** to get the author discount.
+- **Bulk orders for your team:** Email **jegan@tektutor.org**
 
 
 ## Info - Check if all the tools required are installed
