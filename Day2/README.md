@@ -19,31 +19,31 @@ asciidoctor --version | head -n 1
 
 ## Labs
 
-| Lab | Title | Time |
-|---|---|---|
-| [D.1](#d1-one-sentence-per-line-proven-with-git) | One sentence per line, proven with Git | 35 min |
-| [D.1b](#d1b-two-writers-two-laptops-one-shared-repository) | Two writers, two laptops, one shared repository | 35 min |
-| [D.2](#d2-a-rich-rest-page-cell-balancing) | A rich reST page: cell balancing | 40 min |
-| [D.3](#d3-convert-a-real-readme-to-rest-and-fix-what-pandoc-gets-wrong) | Convert a real README to reST, and fix what Pandoc gets wrong | 40 min |
-| [D.4](#d4-one-asciidoc-source-for-two-products) | One AsciiDoc source for two products | 40 min |
-| [D.5](#d5-the-same-page-in-asciidoc-and-what-you-learn-from-it) | The same page in AsciiDoc, and what you learn from it | 35 min |
-| [D.6](#d6-draw-the-can-start-up-handshake) | Draw the CAN start-up handshake | 40 min |
-| [D.7](#d7-model-the-bms-fault-handling-as-a-state-machine) | Model the BMS fault handling as a state machine | 40 min |
-| [D.8](#d8-give-every-diagram-the-same-style-from-one-file) | Give every diagram the same style from one file | 35 min |
-| [D.9](#d9-draw-the-component-and-deployment-views) | Draw the component and deployment views | 35 min |
-| [D.10](#d10-generate-a-diagram-from-data-and-publish-it-with-sphinx) | Generate a diagram from data, and publish it with Sphinx | 45 min |
-| [D.11](#d11-a-multi-page-operator-manual) | A multi-page operator manual | 40 min |
-| [D.12](#d12-one-source-two-products) | One source, two products | 40 min |
-| [D.13](#d13-show-real-code-from-the-source-files) | Show real code from the source files | 35 min |
-| [D.14](#d14-switch-and-customise-themes) | Switch and customise themes | 35 min |
-| [D.15](#d15-print-the-manual-as-a-pdf) | Print the manual as a PDF | 40 min |
-| [D.16](#d16-a-safety-chain-as-needs) | A safety chain as needs | 40 min |
-| [D.17](#d17-rules-that-stop-the-build) | Rules that stop the build | 35 min |
-| [D.18](#d18-real-test-results-in-the-documentation) | Real test results in the documentation | 40 min |
-| [D.19](#d19-a-coverage-dashboard) | A coverage dashboard | 35 min |
-| [D.20](#d20-ci-for-the-documentation) | CI for the documentation | 45 min |
+| Lab | Title |
+|---|---|
+| [Lab D.1](#lab-d1---one-sentence-per-line-proven-with-git) | One sentence per line, proven with Git |
+| [Lab D.1b](#lab-d1b---two-writers-two-laptops-one-shared-repository) | Two writers, two laptops, one shared repository |
+| [Lab D.2](#lab-d2---a-rich-rest-page-cell-balancing) | A rich reST page: cell balancing |
+| [Lab D.3](#lab-d3---convert-a-real-readme-to-rest-and-fix-what-pandoc-gets-wrong) | Convert a real README to reST, and fix what Pandoc gets wrong |
+| [Lab D.4](#lab-d4---one-asciidoc-source-for-two-products) | One AsciiDoc source for two products |
+| [Lab D.5](#lab-d5---the-same-page-in-asciidoc-and-what-you-learn-from-it) | The same page in AsciiDoc, and what you learn from it |
+| [Lab D.6](#lab-d6---draw-the-can-start-up-handshake) | Draw the CAN start-up handshake |
+| [Lab D.7](#lab-d7---model-the-bms-fault-handling-as-a-state-machine) | Model the BMS fault handling as a state machine |
+| [Lab D.8](#lab-d8---give-every-diagram-the-same-style-from-one-file) | Give every diagram the same style from one file |
+| [Lab D.9](#lab-d9---draw-the-component-and-deployment-views) | Draw the component and deployment views |
+| [Lab D.10](#lab-d10---generate-a-diagram-from-data-and-publish-it-with-sphinx) | Generate a diagram from data, and publish it with Sphinx |
+| [Lab D.11](#lab-d11---a-multi-page-operator-manual) | A multi-page operator manual |
+| [Lab D.12](#lab-d12---one-source-two-products) | One source, two products |
+| [Lab D.13](#lab-d13---show-real-code-from-the-source-files) | Show real code from the source files |
+| [Lab D.14](#lab-d14---switch-and-customise-themes) | Switch and customise themes |
+| [Lab D.15](#lab-d15---print-the-manual-as-a-pdf) | Print the manual as a PDF |
+| [Lab D.16](#lab-d16---a-safety-chain-as-needs) | A safety chain as needs |
+| [Lab D.17](#lab-d17---rules-that-stop-the-build) | Rules that stop the build |
+| [Lab D.18](#lab-d18---real-test-results-in-the-documentation) | Real test results in the documentation |
+| [Lab D.19](#lab-d19---a-coverage-dashboard) | A coverage dashboard |
+| [Lab D.20](#lab-d20---ci-for-the-documentation) | CI for the documentation |
 
-## 1. Writing habits, reStructuredText, and AsciiDoc
+# 1. Writing habits, reStructuredText, and AsciiDoc
 
 ```bash
 mkdir -p ~/dac-labs/deep/writing
@@ -51,11 +51,11 @@ cd ~/dac-labs/deep/writing
 source ~/dac-venv/bin/activate
 ```
 
-### D.1 One sentence per line, proven with Git
+## Lab D.1 - One sentence per line, proven with Git
 
-**Time:** 35 minutes. **You build:** Two small repositories, `wrapped` and `semantic`, with the same edits and very different merge results.
+**You build:** Two small repositories, `wrapped` and `semantic`, with the same edits and very different merge results.
 
-#### Create a repository with a wrapped paragraph
+### Create a repository with a wrapped paragraph
 
 ```bash
 mkdir wrapped
@@ -83,7 +83,7 @@ git commit -q -m "Add over-voltage protection page"
 git log --oneline
 ```
 
-#### Asha changes the second sentence
+### Asha changes the second sentence
 
 ```bash
 git switch -q -c asha
@@ -99,7 +99,7 @@ git commit -q -am "Trip after two readings and open both contactors"
 git diff --stat main asha
 ```
 
-#### Ravi changes the fourth sentence
+### Ravi changes the fourth sentence
 
 ```bash
 git switch -q main
@@ -115,7 +115,7 @@ git commit -q -am "Describe the rider warning" --author="Ravi Kumar <ravi.kumar@
 git diff --stat main ravi
 ```
 
-#### Merge both branches
+### Merge both branches
 
 ```bash
 git switch -q main
@@ -132,7 +132,7 @@ git merge --abort
 git status --short
 ```
 
-#### Look at the word-level difference
+### Look at the word-level difference
 
 ```bash
 git diff asha~1 asha
@@ -142,7 +142,7 @@ git diff asha~1 asha
 git diff --word-diff asha~1 asha
 ```
 
-#### Repeat the experiment with one sentence per line
+### Repeat the experiment with one sentence per line
 
 ```bash
 cd ..
@@ -188,13 +188,13 @@ git merge -m "Merge branch 'ravi'" ravi
 cat protection.rst
 ```
 
-#### Compare git blame
+### Compare git blame
 
 ```bash
 git blame --date=short protection.rst
 ```
 
-#### Challenge: split an existing page automatically
+### Challenge: split an existing page automatically
 
 Goal: write a small Python script `split_sentences.py` that reads an reST file and writes it back with one sentence per line. It must keep titles, underlines, blank lines, and indented blocks (such as directive content) as they are, and only join and split the lines of ordinary paragraphs. Run it on the wrapped `protection.rst` from the first repository and check the result with `git diff --stat`.
 Hints:
@@ -202,11 +202,11 @@ Hints:
 - A line that starts with a space, or a line made only of `=`, `-`, or `~`, is not part of an ordinary paragraph.
 - Split the joined paragraph after `.`, `!`, or `?` followed by a space, with `re.split(r"(?<=[.!?]) +", text)`.
 
-### D.1b Two writers, two laptops, one shared repository
+## Lab D.1b - Two writers, two laptops, one shared repository
 
-**Time:** 35 minutes. **You build:** A bare repository `team.git` that plays the role of GitHub, and two clones, `asha` and `ravi`, each in its own terminal window.
+**You build:** A bare repository `team.git` that plays the role of GitHub, and two clones, `asha` and `ravi`, each in its own terminal window.
 
-#### Give each terminal a title and a colour
+### Give each terminal a title and a colour
 
 ```bash
 cat >> ~/.bashrc <<'EOF'
@@ -232,7 +232,7 @@ PS1='\[\e]0;Asha\a\]\[\e[1;32m\][asha]\[\e[0m\] \w\$ '
 PS1='\[\e]0;Ravi\a\]\[\e[1;34m\][ravi]\[\e[0m\] \w\$ '
 ```
 
-#### Create the shared repository and Asha's clone
+### Create the shared repository and Asha's clone
 
 ```bash
 # Asha's window
@@ -245,7 +245,7 @@ git -C asha config user.email "asha@example.com"
 ls
 ```
 
-#### Create Ravi's clone, in Ravi's window
+### Create Ravi's clone, in Ravi's window
 
 ```bash
 # Ravi's window
@@ -257,7 +257,7 @@ cd ravi
 git config user.name
 ```
 
-#### Asha writes the page and pushes it
+### Asha writes the page and pushes it
 
 ```bash
 # Asha's window
@@ -292,7 +292,7 @@ git pull -q origin main
 git log --oneline
 ```
 
-#### Both writers change different sentences at the same time
+### Both writers change different sentences at the same time
 
 ```bash
 # Asha's window
@@ -313,7 +313,7 @@ git commit -q -am "Describe the rider warning"
 git push origin main    # fails on purpose
 ```
 
-#### Ravi pulls, and Git merges both changes
+### Ravi pulls, and Git merges both changes
 
 ```bash
 # Ravi's window
@@ -322,7 +322,7 @@ git push origin main
 git log --oneline --graph
 ```
 
-#### Asha pulls, and sees who wrote which sentence
+### Asha pulls, and sees who wrote which sentence
 
 ```bash
 # Asha's window
@@ -332,7 +332,7 @@ git blame -s protection.rst
 git log --format='%h %an: %s'
 ```
 
-#### Repeat the experiment with a wrapped paragraph
+### Repeat the experiment with a wrapped paragraph
 
 ```bash
 # Asha's window
@@ -415,9 +415,9 @@ git merge --abort
 git status --short
 ```
 
-#### One limit of one sentence per line
+### One limit of one sentence per line
 
-#### Challenge: prove the limit yourself
+### Challenge: prove the limit yourself
 
 Goal: in the first pair of clones (`asha` and `ravi`), let Asha change sentence 3 and Ravi change sentence 4 at the same time. Predict the result before you pull, then check it.
 Hints:
@@ -425,11 +425,11 @@ Hints:
 - Asha pushes first. Ravi commits without pulling, then runs `git pull --no-rebase --no-edit origin main`.
 - Count the unchanged lines between the two edits.
 
-### D.2 A rich reST page: cell balancing
+## Lab D.2 - A rich reST page: cell balancing
 
-**Time:** 40 minutes. **You build:** A Sphinx project `balancing` with a numbered, cross-linked page about cell balancing.
+**You build:** A Sphinx project `balancing` with a numbered, cross-linked page about cell balancing.
 
-#### Create the project
+### Create the project
 
 ```bash
 cd ~/dac-labs/deep/writing
@@ -469,7 +469,7 @@ BMS cell balancing
    limits
 ```
 
-#### Write the limits page
+### Write the limits page
 
 `limits.rst`
 
@@ -500,7 +500,7 @@ The BMS keeps every cell inside the limits in :numref:`tab-cell-limits`.
      - Open both main contactors
 ```
 
-#### Add measured data as a CSV file
+### Add measured data as a CSV file
 
 `data/balance-test.csv`
 
@@ -521,7 +521,7 @@ Cell,Before (V),After 2 h (V),Bleed time (min)
 13,4.115,4.103,24
 ```
 
-#### Write the balancing page
+### Write the balancing page
 
 `balancing.rst`
 
@@ -605,7 +605,7 @@ After two hours every cell was within 3 mV of the others, well inside the limits
 For all voltage limits, read :doc:`limits`.
 ```
 
-#### Build in strict mode
+### Build in strict mode
 
 ```bash
 sphinx-build -q -E -W -b html . _build/html
@@ -622,7 +622,7 @@ grep -o '<span class="caption-text">[^<]*' _build/html/limits.html
 firefox _build/html/balancing.html &
 ```
 
-#### Break it: a grid table that does not line up
+### Break it: a grid table that does not line up
 
 ```bash
 cp balancing.rst balancing.good
@@ -630,7 +630,7 @@ sed -i 's/| Passive     | A resistor/| Passive    | A resistor/' balancing.rst
 sphinx-build -q -E -W -b html . _build/html    # fails on purpose
 ```
 
-#### Break it: a label that does not exist
+### Break it: a label that does not exist
 
 ```bash
 cp balancing.good balancing.rst
@@ -638,7 +638,7 @@ sed -i 's/:ref:`pack-limits`/:ref:`pack-limit`/' balancing.rst
 sphinx-build -q -E -W -b html . _build/html    # fails on purpose
 ```
 
-#### Break it: wrong indentation
+### Break it: wrong indentation
 
 ```bash
 cp balancing.good balancing.rst
@@ -652,7 +652,7 @@ rm balancing.good
 sphinx-build -q -E -W -b html . _build/html
 ```
 
-#### Challenge: add a temperature table and link to it
+### Challenge: add a temperature table and link to it
 
 Goal: the limits page must also show the temperature limits, as a numbered table loaded from a new CSV file `data/temp-limits.csv`. The balancing page must refer to it with `:numref:`, in the sentence "Balancing stops above 50 °C, see Table N." Build in strict mode and check the numbers.
 Hints:
@@ -660,11 +660,11 @@ Hints:
 - `:numref:` can link to a table on another page. The label is enough, you do not need the page name.
 - Think about which number the new table gets, and which numbers change.
 
-### D.3 Convert a real README to reST, and fix what Pandoc gets wrong
+## Lab D.3 - Convert a real README to reST, and fix what Pandoc gets wrong
 
-**Time:** 40 minutes. **You build:** A small Sphinx site `readme-site` built from a converted and corrected README.
+**You build:** A small Sphinx site `readme-site` built from a converted and corrected README.
 
-#### Write the README
+### Write the README
 
 ```bash
 cd ~/dac-labs/deep/writing
@@ -726,14 +726,14 @@ PEAK PCAN-USB, Kvaser Leaf, and CANable.
 See the [contributing guide](CONTRIBUTING.md) and [Linux setup](docs/install.md#linux).
 ````
 
-#### Convert it with Pandoc
+### Convert it with Pandoc
 
 ```bash
 pandoc -f gfm -t rst --wrap=preserve -o readme.rst README.md
 cat readme.rst
 ```
 
-#### Build it in strict mode
+### Build it in strict mode
 
 `conf.py`
 
@@ -759,7 +759,7 @@ bmstool documentation
 sphinx-build -q -E -W -b html . _build/html
 ```
 
-#### Find what went wrong
+### Find what went wrong
 
 ```bash
 firefox _build/html/readme.html &
@@ -770,7 +770,7 @@ grep -n -A2 "raw:: html" readme.rst
 grep -o 'href="[^"]*\.md[^"]*"' _build/html/readme.html
 ```
 
-#### Fix the page by hand
+### Fix the page by hand
 
 ```bash
 cp readme.rst readme-pandoc.txt
@@ -841,7 +841,7 @@ Read data in Python:
 See the :doc:`contributing guide <contributing>` and :ref:`install-linux`.
 ```
 
-#### See the build fail on the new links
+### See the build fail on the new links
 
 ```bash
 sphinx-build -q -E -W --keep-going -b html . _build/html    # fails on purpose
@@ -877,14 +877,14 @@ cat index.rst
 sphinx-build -q -E -W --keep-going -b html . _build/html
 ```
 
-#### Compare the Pandoc output with your fix
+### Compare the Pandoc output with your fix
 
 ```bash
 diff -u readme-pandoc.txt readme.rst | head -n 40
 diff -u readme-pandoc.txt readme.rst | grep -c '^[-+][^-+]'
 ```
 
-#### Challenge: let Pandoc convert the alerts
+### Challenge: let Pandoc convert the alerts
 
 Goal: write `gfm-alerts.lua` that turns a block quote starting with `[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, or `[!CAUTION]` into the matching reST admonition. Run Pandoc again with `--lua-filter=gfm-alerts.lua` and check that the output contains `.. note::`.
 Hints:
@@ -892,11 +892,11 @@ Hints:
 - `pandoc.utils.stringify(el.content[1].content[1])` gives the first word of the first paragraph, here `[!NOTE]`.
 - Return `pandoc.Div(el.content, pandoc.Attr("", {"note"}))`. The reST writer turns a div with the class `note` into `.. note::`.
 
-### D.4 One AsciiDoc source for two products
+## Lab D.4 - One AsciiDoc source for two products
 
-**Time:** 40 minutes. **You build:** A manual `manual.adoc` with shared partials and test data, and two HTML outputs from it.
+**You build:** A manual `manual.adoc` with shared partials and test data, and two HTML outputs from it.
 
-#### Plan the files
+### Plan the files
 
 ```bash
 cd ~/dac-labs/deep/writing
@@ -904,7 +904,7 @@ mkdir -p variants/partials variants/data
 cd variants
 ```
 
-#### Write the shared limits with tagged regions
+### Write the shared limits with tagged regions
 
 `partials/limits.adoc`
 
@@ -925,7 +925,7 @@ Charge the pack only between 0 °C and 45 °C.
 // end::temperature[]
 ```
 
-#### Write the test data
+### Write the test data
 
 `data/eol-scooter.csv`
 
@@ -944,7 +944,7 @@ Cell,Voltage (V),Result
 2,3.598,Pass
 ```
 
-#### Write the main document
+### Write the main document
 
 `manual.adoc`
 
@@ -991,7 +991,7 @@ Compare every cell with <<cell-data>> before you charge.
 Keep to the limits in <<voltage-limits>>.
 ```
 
-#### Build both variants
+### Build both variants
 
 ```bash
 asciidoctor -o out/scooter.html manual.adoc
@@ -1008,7 +1008,7 @@ diff out/scooter.txt out/ebike.txt    # fails on purpose
 grep -E "Compare every cell|Keep to the limits" out/ebike.txt
 ```
 
-#### Break it: a tag that does not exist
+### Break it: a tag that does not exist
 
 ```bash
 sed -i 's/tag=voltage/tag=voltag/' manual.adoc
@@ -1020,7 +1020,7 @@ echo "exit status: $?"
 asciidoctor --failure-level=WARN -o out/scooter.html manual.adoc    # fails on purpose
 ```
 
-#### Break it: a reference that does not exist
+### Break it: a reference that does not exist
 
 ```bash
 sed -i 's/tag=voltag/tag=voltage/; s/<<voltage-limits>>/<<voltage-limit>>/' manual.adoc
@@ -1035,7 +1035,7 @@ sed -i 's/<<voltage-limit>>/<<voltage-limits>>/' manual.adoc
 asciidoctor -v --failure-level=INFO -o out/scooter.html manual.adoc
 ```
 
-#### Challenge: add a third product
+### Challenge: add a third product
 
 Goal: build `out/cargo.html` from the same `manual.adoc`, with its own test data, and with the temperature limits only in the cargo manual. The scooter and e-bike outputs must not change.
 Hints:
@@ -1043,11 +1043,11 @@ Hints:
 - Use `ifdef::show-temperature[]` around a second `include` that uses `tag=temperature`.
 - Build all three variants with `--failure-level=WARN` and `-v --failure-level=INFO`, and compare the text versions with `diff`.
 
-### D.5 The same page in AsciiDoc, and what you learn from it
+## Lab D.5 - The same page in AsciiDoc, and what you learn from it
 
-**Time:** 35 minutes. **You build:** `balancing/adoc/` with the page in AsciiDoc, and your own reST and AsciiDoc comparison.
+**You build:** `balancing/adoc/` with the page in AsciiDoc, and your own reST and AsciiDoc comparison.
 
-#### Prepare the folder
+### Prepare the folder
 
 ```bash
 cd ~/dac-labs/deep/writing/balancing
@@ -1055,7 +1055,7 @@ mkdir adoc
 cd adoc
 ```
 
-#### Draw the diagram outside the document
+### Draw the diagram outside the document
 
 `balancing-flow.puml`
 
@@ -1078,7 +1078,7 @@ plantuml -tsvg balancing-flow.puml
 ls
 ```
 
-#### Write the limits page
+### Write the limits page
 
 `limits.adoc`
 
@@ -1092,7 +1092,7 @@ Every cell stays between 2.80 V and 4.20 V.
 Above 4.25 V the BMS opens both main contactors.
 ```
 
-#### Write the balancing page
+### Write the balancing page
 
 `balancing.adoc`
 
@@ -1168,7 +1168,7 @@ grep -o 'href="limits.html[^"]*"' balancing.html
 firefox balancing.html ../_build/html/balancing.html &
 ```
 
-#### Make the same mistakes in both languages
+### Make the same mistakes in both languages
 
 ```bash
 cp balancing.adoc balancing.good
@@ -1205,9 +1205,9 @@ rm balancing.good
 asciidoctor -v --failure-level=INFO balancing.adoc
 ```
 
-#### Fill in the comparison
+### Fill in the comparison
 
-#### Challenge: make AsciiDoc check the cross-document link
+### Challenge: make AsciiDoc check the cross-document link
 
 Goal: create `manual.adoc` that includes `balancing.adoc` and `limits.adoc`, change the cross-document reference into a normal `<<pack-limits>>` reference, and prove that a wrong ID now fails the build.
 Hints:
@@ -1215,7 +1215,7 @@ Hints:
 - A reference to an ID in another included file is now a reference inside one document.
 - Build `manual.adoc` with `-v --failure-level=INFO`, once with the right ID and once with a wrong one.
 
-## 2. PlantUML in depth
+# 2. PlantUML in depth
 
 ```bash
 mkdir -p ~/dac-labs/deep/plantuml
@@ -1223,11 +1223,11 @@ cd ~/dac-labs/deep/plantuml
 source ~/dac-venv/bin/activate
 ```
 
-### D.6 Draw the CAN start-up handshake
+## Lab D.6 - Draw the CAN start-up handshake
 
-**Time:** 40 minutes. **You build:** `d6/startup.puml`, the full start-up handshake between the vehicle ECU, the dashboard, the BMS, and the cell monitor, plus a fault case.
+**You build:** `d6/startup.puml`, the full start-up handshake between the vehicle ECU, the dashboard, the BMS, and the cell monitor, plus a fault case.
 
-#### Create the file with the four participants
+### Create the file with the four participants
 
 ```bash
 mkdir d6
@@ -1258,7 +1258,7 @@ plantuml -tpng startup.puml
 ls
 ```
 
-#### Add numbered messages, a divider, and a delay
+### Add numbered messages, a divider, and a delay
 
 `startup.puml`
 
@@ -1291,7 +1291,7 @@ AFE --> BMS : ready
 plantuml -tpng startup.puml
 ```
 
-#### Add the self-test with a loop, an alternative, and a note
+### Add the self-test with a loop, an alternative, and a note
 
 `startup.puml`
 
@@ -1337,7 +1337,7 @@ ref over BMS, AFE : Lab P.3: precharge sequence
 plantuml -tpng startup.puml
 ```
 
-#### Break the diagram on purpose
+### Break the diagram on purpose
 
 ```bash
 cp startup.puml startup.bak
@@ -1350,7 +1350,7 @@ mv startup.bak startup.puml
 plantuml -tpng startup.puml; echo "exit status: $?"
 ```
 
-#### Add the ready phase with parallel messages
+### Add the ready phase with parallel messages
 
 `startup.puml`
 
@@ -1405,7 +1405,7 @@ deactivate BMS
 plantuml -tpng startup.puml
 ```
 
-#### Challenge: add the fault case
+### Challenge: add the fault case
 
 Hints:
 - Start the phase with a divider, and show the 300 ms of silence with a delay.
@@ -1416,11 +1416,11 @@ Hints:
 plantuml -tpng startup.puml; echo "exit status: $?"
 ```
 
-### D.7 Model the BMS fault handling as a state machine
+## Lab D.7 - Model the BMS fault handling as a state machine
 
-**Time:** 40 minutes. **You build:** `d7/faults.puml` in PNG and SVG, the fault-handling state machine of the BMS.
+**You build:** `d7/faults.puml` in PNG and SVG, the fault-handling state machine of the BMS.
 
-#### Draw the top-level states
+### Draw the top-level states
 
 ```bash
 cd ..
@@ -1450,7 +1450,7 @@ Fault --> [*] : power off
 plantuml -tpng faults.puml
 ```
 
-#### Turn Operating into a composite state
+### Turn Operating into a composite state
 
 `faults.puml`
 
@@ -1482,7 +1482,7 @@ Fault --> [*] : power off
 plantuml -tpng faults.puml
 ```
 
-#### Add a choice point with guards
+### Add a choice point with guards
 
 `faults.puml`
 
@@ -1526,7 +1526,7 @@ Fault --> [*] : power off
 plantuml -tpng faults.puml
 ```
 
-#### Return to where the BMS left off, with a history state
+### Return to where the BMS left off, with a history state
 
 `faults.puml` (add above @enduml)
 
@@ -1538,7 +1538,7 @@ Warning --> Operating[H] : no fault for 2 s
 plantuml -tpng faults.puml
 ```
 
-#### Add a parallel region, and see a limit of PlantUML 1.2020.02
+### Add a parallel region, and see a limit of PlantUML 1.2020.02
 
 `regions.puml`
 
@@ -1570,7 +1570,7 @@ plantuml -tpng regions.puml
 plantuml -tpng faults.puml
 ```
 
-#### Render SVG and check both outputs
+### Render SVG and check both outputs
 
 ```bash
 plantuml -tsvg faults.puml
@@ -1579,7 +1579,7 @@ grep -o "ContactorOpen" faults.svg | head -n 1
 grep -c "<text" faults.svg
 ```
 
-#### Challenge: add cell balancing and a warning timeout
+### Challenge: add cell balancing and a warning timeout
 
 Hints:
 - A composite state can sit inside another composite state. Write `state Charging { ... }` inside `state Operating { ... }`.
@@ -1590,11 +1590,11 @@ Hints:
 plantuml -tpng faults.puml; echo "exit status: $?"
 ```
 
-### D.8 Give every diagram the same style from one file
+## Lab D.8 - Give every diagram the same style from one file
 
-**Time:** 35 minutes. **You build:** `d8/bms-style.iuml` and three diagrams that use it, in colour and in a grey print version.
+**You build:** `d8/bms-style.iuml` and three diagrams that use it, in colour and in a grey print version.
 
-#### Write the shared style file
+### Write the shared style file
 
 ```bash
 cd ..
@@ -1625,7 +1625,7 @@ skinparam NoteBackgroundColor white
 skinparam NoteBorderColor $ink
 ```
 
-#### Use the style in a sequence diagram
+### Use the style in a sequence diagram
 
 `heartbeat.puml`
 
@@ -1646,7 +1646,7 @@ ECU -> BMS : VCU_Command\n<size:10>CAN 0x200, every 20 ms</size>
 plantuml -tpng heartbeat.puml
 ```
 
-#### Try a procedure from the website, and see it fail
+### Try a procedure from the website, and see it fail
 
 ```plantuml
 !procedure $can($from, $to, $name, $id)
@@ -1675,7 +1675,7 @@ plantuml -tpng heartbeat.puml    # fails on purpose
 mv bms-style.bak bms-style.iuml
 ```
 
-#### Add a working procedure, a function, and a macro
+### Add a working procedure, a function, and a macro
 
 `bms-style.iuml` (add at the end)
 
@@ -1694,7 +1694,7 @@ $from -> $to : $name\n<size:10>CAN $id</size>
 !define DRAFT(x) note "DRAFT: x" as N_DRAFT
 ```
 
-#### Rewrite the diagram with the shared parts, and add two more diagrams
+### Rewrite the diagram with the shared parts, and add two more diagrams
 
 `heartbeat.puml`
 
@@ -1748,7 +1748,7 @@ plantuml -tpng heartbeat.puml pack.puml modes.puml; echo "exit status: $?"
 ls *.png
 ```
 
-#### Change the style in one place
+### Change the style in one place
 
 ```bash
 sed -i 's/^!\$fill = .*/!$fill = "#EEEEEE"/' bms-style.iuml
@@ -1757,7 +1757,7 @@ head -n 4 bms-style.iuml
 plantuml -tpng heartbeat.puml pack.puml modes.puml
 ```
 
-#### Challenge: choose colour or print from the command line
+### Challenge: choose colour or print from the command line
 
 Hints:
 - `-DNAME=value` on the command line defines `NAME` before the preprocessor reads the file.
@@ -1770,11 +1770,11 @@ plantuml -DPRINT=1 -tpng -o print *.puml
 ls print
 ```
 
-### D.9 Draw the component and deployment views
+## Lab D.9 - Draw the component and deployment views
 
-**Time:** 35 minutes. **You build:** `d9/components.puml` and `d9/deployment.puml`.
+**You build:** `d9/components.puml` and `d9/deployment.puml`.
 
-#### Draw the firmware components inside a package
+### Draw the firmware components inside a package
 
 ```bash
 cd ..
@@ -1804,7 +1804,7 @@ SOC --> CANS : SOC frames
 plantuml -tpng components.puml
 ```
 
-#### Try a port, and see it fail
+### Try a port, and see it fail
 
 `port-test.puml`
 
@@ -1821,7 +1821,7 @@ plantuml -tpng port-test.puml    # fails on purpose
 rm port-test.puml port-test.png
 ```
 
-#### Add interfaces and dependencies
+### Add interfaces and dependencies
 
 `components.puml`
 
@@ -1853,7 +1853,7 @@ VCU -- CANBUS
 plantuml -tpng components.puml
 ```
 
-#### Add a note and a legend
+### Add a note and a legend
 
 `components.puml` (add above @enduml)
 
@@ -1870,7 +1870,7 @@ endlegend
 plantuml -tpng components.puml
 ```
 
-#### Draw the deployment view
+### Draw the deployment view
 
 `deployment.puml`
 
@@ -1899,7 +1899,7 @@ VCU ..> CLOUD : LTE (via telematics)
 plantuml -tpng deployment.puml
 ```
 
-#### Challenge: add the charger
+### Challenge: add the charger
 
 Hints:
 - Copy the pattern of *State of charge* for the component.
@@ -1910,11 +1910,11 @@ plantuml -tpng components.puml deployment.puml; echo "exit status: $?"
 grep -c "Charge" components.puml deployment.puml
 ```
 
-### D.10 Generate a diagram from data, and publish it with Sphinx
+## Lab D.10 - Generate a diagram from data, and publish it with Sphinx
 
-**Time:** 45 minutes. **You build:** `d10/`, a small Sphinx project whose CAN page updates when the CSV file changes.
+**You build:** `d10/`, a small Sphinx project whose CAN page updates when the CSV file changes.
 
-#### Write the data file
+### Write the data file
 
 ```bash
 cd ..
@@ -1932,7 +1932,7 @@ id,name,sender,receiver,period_ms
 0x312,BMS_SOC,BMS,DASH,1000
 ```
 
-#### Write the generator script
+### Write the generator script
 
 `gen_can.py`
 
@@ -1974,7 +1974,7 @@ cat can.puml
 plantuml -tpng can.puml
 ```
 
-#### Break the data on purpose
+### Break the data on purpose
 
 ```bash
 sed -i 's/^0x200,VCU_Command,ECU,BMS,20$/0x200,VCU_Command,ECU,BSM,20/' can-messages.csv
@@ -1983,7 +1983,7 @@ sed -i 's/^0x200,VCU_Command,ECU,BSM,20$/0x200,VCU_Command,ECU,BMS,20/' can-mess
 python3 gen_can.py can-messages.csv can.puml
 ```
 
-#### Create a Sphinx page that shows the diagram
+### Create a Sphinx page that shows the diagram
 
 `conf.py`
 
@@ -2018,7 +2018,7 @@ sphinx-build -q -E -W -b html . _build/html
 ls _build/html/_images
 ```
 
-#### Change the data, and rebuild
+### Change the data, and rebuild
 
 `can-messages.csv` (add at the end)
 
@@ -2031,7 +2031,7 @@ sphinx-build -q -E -W -b html . _build/html
 grep -c "BMS_Temp" can.puml
 ```
 
-#### Challenge: generate a table from the same data
+### Challenge: generate a table from the same data
 
 Hints:
 - A `list-table` directive is easy to generate: one `* -` line per row and one `  -` line per cell.
@@ -2044,7 +2044,7 @@ cat can-table.rst
 grep -c "<tr" _build/html/index.html
 ```
 
-## 3. Sphinx in depth
+# 3. Sphinx in depth
 
 ```bash
 mkdir -p ~/dac-labs/deep/sphinx
@@ -2052,11 +2052,11 @@ cd ~/dac-labs/deep/sphinx
 source ~/dac-venv/bin/activate
 ```
 
-### D.11 A multi-page operator manual
+## Lab D.11 - A multi-page operator manual
 
-**Time:** 40 minutes. **You build:** A five-page *BMS Operator Manual* with numbered chapters, figures, tables, glossary links, and an index.
+**You build:** A five-page *BMS Operator Manual* with numbered chapters, figures, tables, glossary links, and an index.
 
-#### Create the project
+### Create the project
 
 ```bash
 sphinx-quickstart -q -p "BMS Operator Manual" -a "Asha Rao" -v 1.0 -l en manual
@@ -2065,7 +2065,7 @@ mkdir safety operation
 ls
 ```
 
-#### Turn on numbering in conf.py
+### Turn on numbering in conf.py
 
 `conf.py`
 
@@ -2088,7 +2088,7 @@ numfig_format = {"figure": "Figure %s", "table": "Table %s", "code-block": "List
 numfig_secnum_depth = 1
 ```
 
-#### Write the start page with a numbered toctree
+### Write the start page with a numbered toctree
 
 `index.rst`
 
@@ -2115,7 +2115,7 @@ Index
 Look up a topic in the :ref:`genindex`.
 ```
 
-#### Write the safety chapter
+### Write the safety chapter
 
 `safety/index.rst`
 
@@ -2218,7 +2218,7 @@ opens the main contactor within 50 ms.
      - Keep the contactor open and report the fault
 ```
 
-#### Write the operation chapter and the glossary
+### Write the operation chapter and the glossary
 
 `operation/charging.rst`
 
@@ -2258,7 +2258,7 @@ Glossary
       State of charge. The energy left in the pack, in percent of a full charge.
 ```
 
-#### Build in strict mode
+### Build in strict mode
 
 ```bash
 sphinx-build -E -W --keep-going -b html . _build/html
@@ -2266,7 +2266,7 @@ grep -o "Table 1.1\|Figure 1.1\|Table 1.2" _build/html/safety/*.html | sort -u
 grep -o '<span class="section-number">[0-9.]*' _build/html/safety/faults.html | head -n 1
 ```
 
-#### Break the manual three times
+### Break the manual three times
 
 ```bash
 cp safety/faults.rst safety/faults-old.rst
@@ -2274,7 +2274,7 @@ sed -i 's/^   faults$/   fault/' safety/index.rst
 sphinx-build -q -E -W --keep-going -b html . _build/html    # fails on purpose
 ```
 
-#### Fix the warnings
+### Fix the warnings
 
 ```bash
 sed -i 's/^   fault$/   faults/' safety/index.rst
@@ -2282,18 +2282,18 @@ rm safety/faults-old.rst
 sphinx-build -E -W --keep-going -b html . _build/html
 ```
 
-#### Challenge: add a maintenance page
+### Challenge: add a maintenance page
 
 Hints:
 - The operation chapter has no start page yet. Create `operation/index.rst` with a toctree for `charging` and `maintenance`, and put `operation/index` in the main toctree instead of `operation/charging`.
 - Give the table a `:name:` and refer to it with `:numref:`.
 - Build with `-E -W --keep-going`. The manual is done when the build prints no warnings.
 
-### D.12 One source, two products
+## Lab D.12 - One source, two products
 
-**Time:** 40 minutes. **You build:** A user manual that builds for the 13S e-scooter and for the 10S e-bike, with the release number from `git describe`.
+**You build:** A user manual that builds for the 13S e-scooter and for the 10S e-bike, with the release number from `git describe`.
 
-#### Create the project and put it in Git
+### Create the project and put it in Git
 
 ```bash
 cd ~/dac-labs/deep/sphinx
@@ -2302,7 +2302,7 @@ cd usermanual
 git init -q
 ```
 
-#### Write a conf.py that computes its values
+### Write a conf.py that computes its values
 
 `conf.py`
 
@@ -2344,7 +2344,7 @@ rst_epilog = f"""
 """
 ```
 
-#### Write the manual page
+### Write the manual page
 
 `index.rst`
 
@@ -2372,7 +2372,7 @@ The main fuse is rated |fuse|.
    before you pull it out.
 ```
 
-#### Commit, tag, and build without a tag
+### Commit, tag, and build without a tag
 
 ```bash
 git add .
@@ -2381,7 +2381,7 @@ git tag v1.0
 sphinx-build -q -E -b text . _build/text 2>&1 | grep -E "Configuration error|ConfigError"
 ```
 
-#### Build both products and compare them
+### Build both products and compare them
 
 ```bash
 sphinx-build -q -E -t scooter -b text . _build/scooter
@@ -2389,7 +2389,7 @@ sphinx-build -q -E -t ebike -b text . _build/ebike
 diff -u _build/scooter/index.txt _build/ebike/index.txt | tail -n +3
 ```
 
-#### Watch the version follow Git
+### Watch the version follow Git
 
 ```bash
 sed -i 's/six deck screws/six T25 deck screws/' index.rst
@@ -2400,7 +2400,7 @@ sphinx-build -q -E -t scooter -b text . _build/scooter
 head -n 5 _build/scooter/index.txt
 ```
 
-#### Make a mistake with a substitution
+### Make a mistake with a substitution
 
 ```bash
 sed -i 's/|fuse|/|fuse_rating|/' index.rst
@@ -2409,18 +2409,18 @@ sed -i 's/|fuse_rating|/|fuse|/' index.rst
 sphinx-build -q -E -W -t scooter -b text . _build/scooter
 ```
 
-#### Challenge: pages that only one product has
+### Challenge: pages that only one product has
 
 Hints:
 - `only` cannot remove a page from a toctree. Remove the page from the build instead: add a pattern to `exclude_patterns` in `conf.py`, based on the tag.
 - A toctree with `:glob:` lists every page whose name matches a pattern, for example `extra-*`. Sphinx warns when a glob pattern matches no page, so make sure each product has at least one page that matches.
 - Check the result with `ls _build/<product>`.
 
-### D.13 Show real code from the source files
+## Lab D.13 - Show real code from the source files
 
-**Time:** 35 minutes. **You build:** A *Firmware* page that shows the limits, the over-voltage check, and the change between two versions of the cell monitor.
+**You build:** A *Firmware* page that shows the limits, the over-voltage check, and the change between two versions of the cell monitor.
 
-#### Create the project and the C files
+### Create the project and the C files
 
 ```bash
 cd ~/dac-labs/deep/sphinx
@@ -2494,7 +2494,7 @@ cell_fault_t cell_check(void)
 gcc -std=c11 -Wall -Wextra -c src/cell_monitor.c -o /tmp/cell_monitor.o
 ```
 
-#### Write the Sphinx files
+### Write the Sphinx files
 
 `conf.py`
 
@@ -2558,7 +2558,7 @@ The marked lines open the contactor path for requirement REQ_002.
    :lineno-match:
 ```
 
-#### Build and look at the result
+### Build and look at the result
 
 ```bash
 sphinx-build -q -E -W -b html . _build/html
@@ -2567,7 +2567,7 @@ sed -n '/Limits/,/Over-voltage/p' _build/text/firmware.txt
 grep -o "Listing [0-9]" _build/html/firmware.html | sort -u
 ```
 
-#### See why markers are safer than line numbers
+### See why markers are safer than line numbers
 
 `firmware.rst` (add at the end)
 
@@ -2593,7 +2593,7 @@ sed -n '/Limits by line number/,$p' _build/text/firmware.txt
 sed -i '/^Limits by line number$/,$d' firmware.rst
 ```
 
-#### Show a change between two versions
+### Show a change between two versions
 
 `src/cell_monitor_v1.c`
 
@@ -2649,7 +2649,7 @@ sphinx-build -q -E -W -b text . _build/text
 sed -n '/Change for REQ_002/,$p' _build/text/firmware.txt
 ```
 
-#### Break an include
+### Break an include
 
 ```bash
 sed -i 's|/\* \[check\] \*/|/* [over-voltage-check] */|' src/cell_monitor.c
@@ -2661,18 +2661,18 @@ sed -i 's|/\* \[over-voltage-check\] \*/|/* [check] */|' src/cell_monitor.c
 sphinx-build -q -E -W -b html . _build/html
 ```
 
-#### Challenge: show the fault type from the header
+### Challenge: show the fault type from the header
 
 Hints:
 - `:start-at:` and `:end-at:` work like `:start-after:` and `:end-before:`, but they include the matching lines.
 - Pick text that appears only once in the file, such as `typedef enum` and `} cell_fault_t;`.
 - Build with `-W`, and check the listing number in the HTML.
 
-### D.14 Switch and customise themes
+## Lab D.14 - Switch and customise themes
 
-**Time:** 35 minutes. **You build:** A service site that builds in Furo and in the Read the Docs theme, marks out-of-range cell voltages, and shows the commit it was built from.
+**You build:** A service site that builds in Furo and in the Read the Docs theme, marks out-of-range cell voltages, and shows the commit it was built from.
 
-#### Create the project
+### Create the project
 
 ```bash
 cd ~/dac-labs/deep/sphinx
@@ -2724,7 +2724,7 @@ The technician measured every cell of pack S1-0042 with the diagnostic tool.
      - 4.17 V
 ```
 
-#### Write a conf.py that can switch themes
+### Write a conf.py that can switch themes
 
 `conf.py`
 
@@ -2769,7 +2769,7 @@ commit = subprocess.run(["git", "rev-parse", "--short", "HEAD"],
 html_context = {"commit": commit}
 ```
 
-#### Build the site in both themes
+### Build the site in both themes
 
 ```bash
 git add .
@@ -2780,7 +2780,7 @@ grep -o "Draft for review[^<]*" _build/furo/index.html | head -n 1
 grep -o "wy-side-nav-search\" *style=\"background: [#0-9a-f]*" _build/rtd/index.html
 ```
 
-#### Add your own CSS and JavaScript
+### Add your own CSS and JavaScript
 
 `_static/bms.css`
 
@@ -2821,7 +2821,7 @@ ls _build/furo/_static/bms.css _build/furo/_static/limits.js
 grep -o '<script src="_static/limits.js[^>]*>' _build/furo/measurements.html
 ```
 
-#### Put the commit into the footer
+### Put the commit into the footer
 
 `_templates/sphinx_rtd_theme/footer.html`
 
@@ -2839,24 +2839,24 @@ grep -o "Built from commit [0-9a-f]*" _build/rtd/index.html
 git log --oneline -1
 ```
 
-#### Ask for a theme that does not exist
+### Ask for a theme that does not exist
 
 ```bash
 DOCS_THEME=furo2 sphinx-build -q -E -W -b html . _build/x 2>&1 | grep -E "Theme error|ThemeError"
 ```
 
-#### Challenge: the commit in the Furo footer
+### Challenge: the commit in the Furo footer
 
 Hints:
 - Furo has no `footer.html`. Its footer is a block called `footer` in `page.html`.
 - `conf.py` already looks for templates in `_templates/furo` when the theme is Furo.
 - Check both builds with `grep -c "Built from commit"`. Each page must contain the line exactly once.
 
-### D.15 Print the manual as a PDF
+## Lab D.15 - Print the manual as a PDF
 
-**Time:** 40 minutes. **You build:** `bms-operator-manual.pdf` with a custom title page, numbered figures and tables, and a second PDF in the challenge.
+**You build:** `bms-operator-manual.pdf` with a custom title page, numbered figures and tables, and a second PDF in the challenge.
 
-#### Check the LaTeX tools
+### Check the LaTeX tools
 
 ```bash
 cd ~/dac-labs/deep/sphinx/manual
@@ -2864,7 +2864,7 @@ latexmk --version | head -n 2 | tail -n 1
 pdflatex --version | head -n 1
 ```
 
-#### Add the PDF settings
+### Add the PDF settings
 
 `conf.py` (add at the end)
 
@@ -2884,7 +2884,7 @@ latex_elements = {
 }
 ```
 
-#### Build the PDF
+### Build the PDF
 
 ```bash
 sphinx-build -M latexpdf . _build -q > latex.log 2>&1    # fails on purpose
@@ -2892,7 +2892,7 @@ tail -n 2 latex.log
 grep -m 1 -A 2 "^!" _build/latex/bms-operator-manual.log
 ```
 
-#### Give the figure a bitmap twin
+### Give the figure a bitmap twin
 
 `safety/make_pack_png.py`
 
@@ -2927,7 +2927,7 @@ sphinx-build -q -E -W -b html . _build/html
 ls _build/html/_images
 ```
 
-#### Add your own title page
+### Add your own title page
 
 `conf.py` (add at the end)
 
@@ -2962,7 +2962,7 @@ sphinx-build -M latexpdf . _build -q > latex.log 2>&1
 pdftotext -l 1 _build/latex/bms-operator-manual.pdf - | grep -v "^$"
 ```
 
-#### Add text for print only
+### Add text for print only
 
 `index.rst` (added after the safety sentence)
 
@@ -2990,7 +2990,7 @@ grep "not controlled" _build/html/index.html | wc -l
 pdftotext _build/latex/bms-operator-manual.pdf - | grep -E "^(Table|Figure) [0-9.]+:"
 ```
 
-#### Challenge: a second PDF with the glossary only
+### Challenge: a second PDF with the glossary only
 
 Hints:
 - `latex_documents` is a list. Add a second entry that starts at `glossary`.
@@ -2998,7 +2998,7 @@ Hints:
 - `latex_elements` applies to every PDF in `latex_documents`, so the glossary PDF gets your title page too. Make the title page print the title of each PDF instead of a fixed text.
 - Check both PDFs with `pdfinfo` and `pdftotext`.
 
-## 4. SphinxNeeds for real work, and CI for documentation
+# 4. SphinxNeeds for real work, and CI for documentation
 
 ```bash
 mkdir -p ~/dac-labs/deep/needs
@@ -3006,11 +3006,11 @@ cd ~/dac-labs/deep/needs
 source ~/dac-venv/bin/activate
 ```
 
-### D.16 A safety chain as needs
+## Lab D.16 - A safety chain as needs
 
-**Time:** 40 minutes. **You build:** A project `safety` with two complete chains, a traceability graph, and a chain table.
+**You build:** A project `safety` with two complete chains, a traceability graph, and a chain table.
 
-#### Create the project and the need types
+### Create the project and the need types
 
 ```bash
 mkdir safety
@@ -3036,7 +3036,7 @@ needs_types = [
 ]
 ```
 
-#### Add the ASIL field and the named links
+### Add the ASIL field and the named links
 
 `conf.py` (add at the end)
 
@@ -3062,7 +3062,7 @@ needs_links = {
 }
 ```
 
-#### Write the hazards and safety goals
+### Write the hazards and safety goals
 
 `hazards.rst`
 
@@ -3099,7 +3099,7 @@ Hazards and safety goals
    The main contactor shall never close with more than 50 V across its contacts.
 ```
 
-#### Write the requirements and specifications
+### Write the requirements and specifications
 
 `requirements.rst`
 
@@ -3147,7 +3147,7 @@ Requirements and specifications
    and to FAULT after 500 ms.
 ```
 
-#### Write the tests
+### Write the tests
 
 `tests.rst`
 
@@ -3175,7 +3175,7 @@ Test cases
    Open the precharge resistor path. Expect FAULT after 500 ms.
 ```
 
-#### Draw the chain and list it in a table
+### Draw the chain and list it in a table
 
 `chain.rst`
 
@@ -3206,7 +3206,7 @@ BMS safety chain
    chain
 ```
 
-#### Build and read the table in the terminal
+### Build and read the table in the terminal
 
 `../tables.py`
 
@@ -3253,7 +3253,7 @@ sphinx-build -q -E -W -b html . _build/html
 python3 ../tables.py _build/html/chain.html
 ```
 
-#### Break a link on purpose
+### Break a link on purpose
 
 ```bash
 sed -i 's/:derives: SG_INRUSH/:derives: SG_INRUSHH/' requirements.rst
@@ -3265,17 +3265,17 @@ sed -i 's/:derives: SG_INRUSHH/:derives: SG_INRUSH/' requirements.rst
 sphinx-build -q -E -W -b html . _build/html
 ```
 
-#### Challenge: add a third chain
+### Challenge: add a third chain
 
 - Add a hazard `HAZ_UV` (ASIL B) and a safety goal `SG_UV` that mitigates it.
 - Add a requirement `REQ_UV_CUTOFF`: open the contactor within 100 ms when any cell is below 2.80 V.
 - Add a test `TC_UV_001` that verifies it. Then build, and count the rows of the chain table.
 
-### D.17 Rules that stop the build
+## Lab D.17 - Rules that stop the build
 
-**Time:** 35 minutes. **You build:** ID rules and three `needs_warnings` rules that fail a strict build.
+**You build:** ID rules and three `needs_warnings` rules that fail a strict build.
 
-#### Require IDs and fix their form
+### Require IDs and fix their form
 
 `conf.py` (add at the end)
 
@@ -3286,7 +3286,7 @@ needs_id_required = True
 needs_id_regex = r"^(HAZ|SG|REQ|SPEC|TC)_[A-Z0-9_]+$"
 ```
 
-#### Try an ID that breaks the rule
+### Try an ID that breaks the rule
 
 `requirements.rst` (add at the end)
 
@@ -3308,7 +3308,7 @@ sed -i 's/:id: Req_soc/:id: REQ_SOC/' requirements.rst
 sphinx-build -q -E -W -b html . _build/html
 ```
 
-#### Write the review checklist as rules
+### Write the review checklist as rules
 
 `conf.py` (add at the end)
 
@@ -3323,13 +3323,13 @@ needs_warnings = {
 needs_warnings_always_warn = True
 ```
 
-#### Build and read the failure
+### Build and read the failure
 
 ```bash
 sphinx-build -q -E -W -b html . _build/html    # fails on purpose
 ```
 
-#### Add a test, and forget the link
+### Add a test, and forget the link
 
 `tests.rst` (add at the end)
 
@@ -3346,7 +3346,7 @@ sphinx-build -q -E -W -b html . _build/html    # fails on purpose
 sphinx-build -q -E -W --keep-going -b html . _build/html    # fails on purpose
 ```
 
-#### Link the test and build again
+### Link the test and build again
 
 ```bash
 sed -i '/:id: TC_CHG_001/a\   :verifies: REQ_CHG_STOP' tests.rst
@@ -3354,16 +3354,16 @@ grep -A2 "id: TC_CHG_001" tests.rst
 sphinx-build -q -E -W --keep-going -b html . _build/html
 ```
 
-#### Challenge: check the top of the chain
+### Challenge: check the top of the chain
 
 - Every hazard must be mitigated by at least one safety goal.
 - Every safety goal must be derived into at least one requirement.
 
-### D.18 Real test results in the documentation
+## Lab D.18 - Real test results in the documentation
 
-**Time:** 40 minutes. **You build:** A firmware module with tests, a converter script, and a test page that rebuilds from the latest test run.
+**You build:** A firmware module with tests, a converter script, and a test page that rebuilds from the latest test run.
 
-#### Write the firmware module
+### Write the firmware module
 
 ```bash
 cd ..
@@ -3399,7 +3399,7 @@ def precharge_state(dc_link_v, pack_v, elapsed_ms):
     return "PRECHARGE"
 ```
 
-#### Write tests that carry their IDs
+### Write tests that carry their IDs
 
 `test_bms_limits.py`
 
@@ -3441,14 +3441,14 @@ def test_TC_PRE_002_precharge_timeout_raises_fault(record_property):
 junit_family = xunit1
 ```
 
-#### Run the tests with a JUnit report
+### Run the tests with a JUnit report
 
 ```bash
 python3 -m pytest -q --junitxml=junit.xml
 grep -o "<testcase" junit.xml | wc -l
 ```
 
-#### Convert the report into needs
+### Convert the report into needs
 
 `junit2needs.py`
 
@@ -3491,7 +3491,7 @@ python3 junit2needs.py junit.xml ../safety/test-results.json
 head -14 ../safety/test-results.json
 ```
 
-#### Replace the hand-written tests with the imported ones
+### Replace the hand-written tests with the imported ones
 
 ```bash
 cd ../safety
@@ -3523,7 +3523,7 @@ sphinx-build -q -E -W --keep-going -b html . _build/html
 python3 ../tables.py _build/html/tests.html
 ```
 
-#### Watch a failure reach the documentation
+### Watch a failure reach the documentation
 
 ```bash
 cd ../code
@@ -3543,17 +3543,17 @@ python3 junit2needs.py junit.xml ../safety/test-results.json
 cd ../safety
 ```
 
-#### Challenge: close the under-voltage gap
+### Challenge: close the under-voltage gap
 
 - Add a function `contactor_must_open_low(cells)` to `bms_limits.py` that returns True when any cell is below `CELL_MIN_V`.
 - Add `test_TC_UV_001_...` to `test_bms_limits.py` that verifies `REQ_UV_CUTOFF`.
 - Run pytest, convert the report, and build strictly. The build must be clean.
 
-### D.19 A coverage dashboard
+## Lab D.19 - A coverage dashboard
 
-**Time:** 35 minutes. **You build:** A `dashboard` page with percentages, a pie chart, a graph that marks the gaps, and two gap tables.
+**You build:** A `dashboard` page with percentages, a pie chart, a graph that marks the gaps, and two gap tables.
 
-#### Write the dashboard
+### Write the dashboard
 
 `dashboard.rst`
 
@@ -3602,7 +3602,7 @@ head -8 _build/text/dashboard.txt
 python3 ../tables.py _build/html/dashboard.html
 ```
 
-#### Mark needs with needextend, and meet its limit
+### Mark needs with needextend, and meet its limit
 
 `dashboard.rst` (add at the end)
 
@@ -3642,7 +3642,7 @@ sphinx-build -q -E -b needs . _build/needs
 python3 show_tags.py all | grep safety_review
 ```
 
-#### Watch the dashboard react to a failure
+### Watch the dashboard react to a failure
 
 ```bash
 cd ../code
@@ -3669,13 +3669,13 @@ cd ../safety
 sphinx-build -q -E -W --keep-going -b html . _build/html
 ```
 
-#### Challenge: coverage of the safety-relevant requirements
+### Challenge: coverage of the safety-relevant requirements
 
-### D.20 CI for the documentation
+## Lab D.20 - CI for the documentation
 
-**Time:** 45 minutes. **You build:** A Git repository with a Makefile, a spelling word list, a pre-push hook, and a workflow file that passes actionlint.
+**You build:** A Git repository with a Makefile, a spelling word list, a pre-push hook, and a workflow file that passes actionlint.
 
-#### Put the project under Git
+### Put the project under Git
 
 ```bash
 cd ..
@@ -3694,7 +3694,7 @@ code/junit.xml
 safety/test-results.json
 ```
 
-#### Write one Makefile for every check
+### Write one Makefile for every check
 
 `Makefile`
 
@@ -3724,7 +3724,7 @@ clean:
 	rm -rf $(DOCS)/_build $(DOCS)/test-results.json code/junit.xml
 ```
 
-#### Make a failed test fail the build
+### Make a failed test fail the build
 
 `safety/conf.py` (add at the end)
 
@@ -3750,7 +3750,7 @@ make check    # fails on purpose
 cat safety/_build/spelling/*.spelling | cut -d'(' -f2 | cut -d')' -f1 | sort -fu
 ```
 
-#### Fill the project word list
+### Fill the project word list
 
 `safety/wordlist.txt`
 
@@ -3762,7 +3762,7 @@ precharge
 make check
 ```
 
-#### See the test rule stop the check
+### See the test rule stop the check
 
 ```bash
 sed -i 's/^CELL_FULL_V = 4.20 /CELL_FULL_V = 4.22 /' code/bms_limits.py
@@ -3774,7 +3774,7 @@ sed -i 's/^CELL_FULL_V = 4.22 /CELL_FULL_V = 4.20 /' code/bms_limits.py
 make check
 ```
 
-#### Commit the project
+### Commit the project
 
 ```bash
 git add .
@@ -3782,7 +3782,7 @@ git commit -q -m "Add BMS safety chain, test import, dashboard, and checks"
 git log --oneline
 ```
 
-#### Block a bad push with a pre-push hook
+### Block a bad push with a pre-push hook
 
 ```bash
 git init -q --bare ~/needs-remote.git
@@ -3825,7 +3825,7 @@ git push -q
 git log --oneline origin/main
 ```
 
-#### Write the GitHub Actions workflow
+### Write the GitHub Actions workflow
 
 `.github/workflows/docs.yml`
 
@@ -3880,7 +3880,7 @@ sed -i 's/needs: chek/needs: check/' .github/workflows/docs.yml
 actionlint
 ```
 
-#### Challenge: run the link check once a week
+### Challenge: run the link check once a week
 
 - the `linkcheck` job runs on a schedule every Monday at 06:00 UTC, and also from a button on GitHub,
 - the `check` job still runs on pull requests and pushes to `main`.
