@@ -1,4 +1,4 @@
-# docs-as-code-oct-2026
+# Docs as code - October 2026 batch
 
 ## Info - This course is based on my book
 <img src="my-dac-book.jpeg" alt="Docs-as-Code and PTC Codebeamer ALM book cover" width="180" align="right">
