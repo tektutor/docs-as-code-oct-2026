@@ -1,6 +1,5 @@
 # Day 1
 
-## Info - This course is based on the book
 <img src="book.png" alt="Docs-as-Code and PTC Codebeamer ALM book cover" width="180" align="right">
 
 ## Info - For detailed Git & GitHub reference, check my public repo on GitHub
