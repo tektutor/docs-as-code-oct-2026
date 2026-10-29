@@ -16,15 +16,24 @@ You can use it to:
 - Keep a reference on your desk when you set up Docs-as-Code and Codebeamer at work
 
 #### Price
-**Pages:** 574
 
-**Rs. 2,500** per copy
+- **Pages:** 574
+- **Price:** Rs. 2,500 per copy
 
 #### How to order
 
-- **Single copy:** Message me on WhatsApp at **+91 822-000-5626**. You order directly from me.
+- **Single copy:** Message me on WhatsApp at **+91 822-000-5626**
+  ([open chat](https://wa.me/918220005626)). You order directly from me.
 - **Bulk orders for your team:** Email **jegan@tektutor.org**
 
+#### My other books
+
+I have written more books on C++, Python, Java, Ansible, OpenShift, and RHEL.
+Browse them all in my WhatsApp catalogue:
+[**View the catalogue**](https://wa.me/c/918220005626)
+
+You can also open the catalogue from my WhatsApp profile: open the chat with
+**+91 822-000-5626**, tap the business name at the top, and then tap **Catalogue**.
 
 ## Info - Check if all the tools required are installed
 ```
