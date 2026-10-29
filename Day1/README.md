@@ -37,10 +37,10 @@ Who uses it?
 - The markup comes first
   - reStructuredText and Docutils
 
-1996: the Zope web server ships StructuredText, a simple plain-text markup.
-1999: David Goodger, a Python developer, starts reworking StructuredText.
-November 2000: he publishes the first reStructuredText specification.
-April 2002: his project is renamed Docutils. PEP 287 proposes reST as the standard format for Python docstrings.
+- 1996: the Zope web server ships StructuredText, a simple plain-text markup.
+- 1999: David Goodger, a Python developer, starts reworking StructuredText.
+- November 2000: he publishes the first reStructuredText specification.
+- April 2002: his project is renamed Docutils. PEP 287 proposes reST as the standard format for Python docstrings.
 
 - Docutils turns one reST file into one HTML page. 
 - A manual needs much more
