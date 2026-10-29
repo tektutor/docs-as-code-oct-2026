@@ -1,5 +1,7 @@
 # Day 1
 
+<img src="book.png" alt="Docs-as-Code and PTC Codebeamer ALM book cover" width="180" align="right">
+
 ## Info - For detailed Git & GitHub reference, check my public repo on GitHub
 <pre>
 https://github.com/tektutor/git-us-june2023-batch1.git
