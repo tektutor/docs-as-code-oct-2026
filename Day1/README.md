@@ -23,6 +23,37 @@ Who uses it?
   Sphinx-Needs.
 </pre>
 
+## Info - What is ALM ?
+<pre>
+- ALM stands for Application Lifecycle Management. 
+- It means managing everything about a product, from the first requirement to release and maintenance, 
+  in one connected system. 
+- An ALM tool keeps every requirement, design item, test and defect, and records how each one links to the others.
+</pre>
+
+## Info - What an ALM tool manages
+<pre>
+Requirements - ustomer requirements, system requirements, software requirements
+Design and architecture - components, interfaces, design decisions
+Risk and safety - hazards, FMEA items, safety goals
+Tests - test cases, test runs, results
+Defects and changes - bugs, change requests
+Releases - versions, baselines, variants
+Reviews and approvals - review records, sign-offs, e-signatures
+</pre>
+
+## Info - Why teams use one ?
+<pre>
+- traceability
+- The links are the main reason. With them, you can follow one requirement through its whole life:
+- Customer requirement
+  → System requirement
+    → Software requirement
+      → Design item
+        → Test case
+          → Test run: passed
+</pre>
+
 ## Info - Sphinx Overview
 <pre>
 - Sphinx was written for one job
