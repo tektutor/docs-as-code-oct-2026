@@ -1,8 +1,7 @@
 # docs-as-code-oct-2026
 
 ## Info - This course is based on my book
-![book](my-dac-book.jpeg)
-
+<img src="my-dac-book.jpeg" alt="Docs-as-Code and PTC Codebeamer ALM book cover" width="180" align="right">
 ### Get the Book
 
 This training follows my book, **Docs-as-Code and PTC Codebeamer ALM**. The labs in this
