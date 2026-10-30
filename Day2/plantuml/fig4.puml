@@ -1,0 +1,35 @@
+@startuml
+title CAN start-up handshake
+autonumber "<b>[00]"
+
+box "Vehicle side" #EEEEEE
+  participant "Vehicle ECU" as ECU
+  participant "Dashboard" as DASH
+end box
+
+box "Battery pack" #DDDDDD
+  participant "BMS" as BMS
+  participant "Cell monitor" as AFE
+end box
+
+== Wake-up ==
+ECU -> BMS : NM_Wakeup (0x500)
+activate BMS
+BMS -> AFE : power on
+...5 ms...
+AFE --> BMS : ready
+
+== Self-test ==
+loop up to 3 attempts
+  BMS -> AFE : read 13 cell voltages
+  alt all cells read
+    AFE --> BMS : V1 to V13
+  else timeout after 20 ms
+    AFE --> BMS : no answer
+    note right of BMS : retry
+  end
+end
+
+ref over BMS, AFE : Lab P.3: precharge sequence
+
+@enduml
