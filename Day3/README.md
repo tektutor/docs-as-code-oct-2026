@@ -1,6 +1,9 @@
 # Docs-as-Code Labs
 
 File contents for each "Create" step are in the lab handout.
+<img src="../Day1/book.png" alt="Docs-as-Code and PTC Codebeamer ALM book cover" width="180" align="right">
+
+Docs-as-Code and PTC Codebeamer ALM, by Jeganathan Swaminathan (TekTutor Press)
 
 ## Lab 0: Setup
 
