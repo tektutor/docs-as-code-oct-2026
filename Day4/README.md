@@ -1,8 +1,59 @@
 # Day 4
 
 ## Info - What is ALM ?
+<pre>
+- Application Lifecycle Management
+- is how a team manages software from the first idea to retirement. 
+- An ALM tool keeps these in one place, linked to each other:
+  - Requirements: what the software must do
+  - Design: how it will do it
+  - Development work: tasks, user stories, commits
+  - Tests: test cases, test runs and results
+  - Defects: bugs and their fixes
+  - Releases and changes: versions, baselines and change requests
+  - Risks and reviews: who approved what, and when
+
+- The main value is traceability. 
+- An auditor can start at a requirement and follow the links to the code, 
+  the tests, and the last test result. 
+- Standards such as ISO 26262 for cars, IEC 62304 for medical devices and DO-178C 
+  for aircraft software demand exactly this.
+
+- ALM tools 
+  - PTC Codebeamer
+  - Siemens Polarion
+  - IBM Engineering Lifecycle Management (DOORS Next), and 
+  - Jira with test and requirement add-ons
+</pre>
 
 ## Info - What is PLM ?
+<pre>
+- Product Lifecycle Management
+- does the same job for the physical product
+  - mechanical parts
+  - electronics and manufacturing. 
+- A PLM tool manages:
+  - CAD models and drawings
+  - The bill of materials (BOM): which parts make up the product
+  - Engineering change orders: approved changes to parts or drawings
+  - Suppliers, costs and compliance: RoHS, REACH and similar regulations
+  - Manufacturing data: how and where the product is built
+  - Service: spare parts and field issues
+
+- PLM
+  - Windchill
+  - Siemens Teamcenter
+  - Dassault 3DEXPERIENCE (ENOVIA), and 
+  - SAP PLM
+
+- The difference 
+  - ALM manages software and its requirements, tests and changes. 
+  - PLM manages hardware and its parts, drawings and production.
+
+- Why the two meet ?
+  - a modern product is both
+  - Consider a Car battery management system, it involves hardware and software
+</pre>
 
 ## Info - CodeBeamer Overview
 <pre>
