@@ -1,0 +1,11 @@
+@startuml lld-us18-sequence
+title LLD-US18 Delete a beneficiary: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant BeneficiaryService
+participant AuditLog
+Browser -> BeneficiaryService : DELETE /beneficiaries/{id}
+BeneficiaryService -> AuditLog : write(deleted)
+BeneficiaryService --> Browser : 204
+@enduml

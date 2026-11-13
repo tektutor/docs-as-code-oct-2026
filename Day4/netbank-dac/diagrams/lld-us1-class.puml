@@ -1,0 +1,17 @@
+@startuml lld-us1-class
+title LLD-US1 Log in with customer ID and password: class diagram
+skinparam monochrome true
+hide empty members
+class LoginController <<controller>> {
+  + login(id, pwd)
+}
+class AuthService <<service>> {
+  - failedCount
+  + checkPassword(id, pwd): bool
+}
+class CustomerRepo <<repository>> {
+  + find(id)
+}
+LoginController --> AuthService : uses
+AuthService --> CustomerRepo : reads
+@enduml

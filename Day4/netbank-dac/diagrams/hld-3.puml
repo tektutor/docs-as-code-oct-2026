@@ -1,0 +1,16 @@
+@startuml hld-3
+title HLD-3 Statements architecture
+skinparam monochrome true
+left to right direction
+component "Web UI\nstatement page" as Web_UI
+component "Statement service\ndate-range query\nrunning balance" as Statement_service
+component "PDF renderer\npassword protection" as PDF_renderer
+component "Month-end job\n1st of month, 02:00" as Month_end_job
+component "CBS adapter" as CBS_adapter
+node "Mail gateway" as Mail_gateway <<external>>
+Web_UI --> Statement_service : HTTPS
+Statement_service --> CBS_adapter
+Statement_service --> PDF_renderer
+Month_end_job --> Statement_service
+Month_end_job --> Mail_gateway
+@enduml

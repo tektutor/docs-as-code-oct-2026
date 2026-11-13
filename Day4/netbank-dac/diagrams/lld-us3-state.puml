@@ -1,0 +1,13 @@
+@startuml lld-us3-state
+title LLD-US3 End the session after 5 idle minutes: state machine
+skinparam monochrome true
+hide empty description
+state ACTIVE
+state WARNED
+state EXPIRED
+[*] --> ACTIVE
+ACTIVE --> WARNED : 4 min idle
+WARNED --> ACTIVE : Stay logged in
+WARNED --> EXPIRED : 5 min idle
+ACTIVE --> EXPIRED : Log out
+@enduml

@@ -1,0 +1,10 @@
+@startuml lld-us11-activity
+title LLD-US11 Download a statement as PDF: activity diagram
+skinparam monochrome true
+start
+:Collect rows;
+:Build password;
+:Render PDF;
+:Send file;
+stop
+@enduml

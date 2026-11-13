@@ -1,0 +1,10 @@
+@startuml lld-us7-activity
+title LLD-US7 View Current account details: activity diagram
+skinparam monochrome true
+start
+:Open account;
+:Read limit and usage;
+:Compute available amount;
+:Show details;
+stop
+@enduml

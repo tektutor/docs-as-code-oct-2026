@@ -1,0 +1,15 @@
+@startuml lld-us20-activity
+title LLD-US20 Get an alert on every debit: activity diagram
+skinparam monochrome true
+start
+:Receive debit event;
+:Build message;
+:Send SMS;
+if (SMS failed?) then (yes)
+else (no)
+  :Send e-mail;
+  stop
+endif
+:Retry up to 3 times;
+stop
+@enduml

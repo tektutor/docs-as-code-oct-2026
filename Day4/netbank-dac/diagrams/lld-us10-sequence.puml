@@ -1,0 +1,13 @@
+@startuml lld-us10-sequence
+title LLD-US10 Get a statement for a date range: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant StatementController
+participant RangeValidator
+participant StatementService
+Browser -> StatementController : GET /statement?from&to
+StatementController -> RangeValidator : check()
+StatementController -> StatementService : query()
+StatementController --> Browser : page 1 of rows
+@enduml

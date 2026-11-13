@@ -1,0 +1,11 @@
+@startuml lld-us11-sequence
+title LLD-US11 Download a statement as PDF: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant StatementService
+participant PdfRenderer
+Browser -> StatementService : GET /statement.pdf
+StatementService -> PdfRenderer : render(rows, pwd)
+StatementService --> Browser : PDF file
+@enduml

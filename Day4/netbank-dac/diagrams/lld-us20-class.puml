@@ -1,0 +1,13 @@
+@startuml lld-us20-class
+title LLD-US20 Get an alert on every debit: class diagram
+skinparam monochrome true
+hide empty members
+class DebitListener <<listener>> {
+  + onDebit(event)
+}
+class NotificationService <<service>> {
+  + sms()
+  + mail()
+}
+DebitListener --> NotificationService
+@enduml

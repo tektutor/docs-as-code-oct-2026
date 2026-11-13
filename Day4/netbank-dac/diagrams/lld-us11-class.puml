@@ -1,0 +1,12 @@
+@startuml lld-us11-class
+title LLD-US11 Download a statement as PDF: class diagram
+skinparam monochrome true
+hide empty members
+class PdfRenderer <<component>> {
+  + render(rows, pwd)
+}
+class StatementService <<service>> {
+  + pdf(acc, from, to)
+}
+StatementService --> PdfRenderer
+@enduml

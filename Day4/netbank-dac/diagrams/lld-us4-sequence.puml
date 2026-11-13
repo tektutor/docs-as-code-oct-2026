@@ -1,0 +1,12 @@
+@startuml lld-us4-sequence
+title LLD-US4 Lock access after 3 failed logins: sequence diagram
+skinparam monochrome true
+autonumber
+participant AuthService
+participant Lockout
+participant SmsGateway
+AuthService -> Lockout : fail(10023456)
+Lockout -> Lockout : failedCount = 3
+Lockout -> Lockout : lockedUntil = now + 24 h
+Lockout -> SmsGateway : "Net banking locked"
+@enduml

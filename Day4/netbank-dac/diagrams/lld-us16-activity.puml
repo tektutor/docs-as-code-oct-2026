@@ -1,0 +1,13 @@
+@startuml lld-us16-activity
+title LLD-US16 Enforce the daily transfer limit: activity diagram
+skinparam monochrome true
+start
+:Sum today;
+if (Sum + amount above limit?) then (yes)
+else (no)
+  :Allow;
+  stop
+endif
+:Reject transfer;
+stop
+@enduml

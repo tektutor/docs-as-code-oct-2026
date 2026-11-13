@@ -1,0 +1,12 @@
+@startuml lld-us18-class
+title LLD-US18 Delete a beneficiary: class diagram
+skinparam monochrome true
+hide empty members
+class BeneficiaryService <<service>> {
+  + delete(id)
+}
+class AuditLog <<component>> {
+  + write(event)
+}
+BeneficiaryService --> AuditLog
+@enduml

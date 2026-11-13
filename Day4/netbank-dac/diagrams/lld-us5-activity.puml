@@ -1,0 +1,14 @@
+@startuml lld-us5-activity
+title LLD-US5 See all accounts and balances: activity diagram
+skinparam monochrome true
+start
+:Load accounts;
+if (In cache (under 30 s)?) then (yes)
+else (no)
+  :Call CBS;
+  stop
+endif
+:Group by type;
+:Show overview;
+stop
+@enduml

@@ -1,0 +1,12 @@
+@startuml lld-us15-sequence
+title LLD-US15 Send money by NEFT or RTGS: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant TransferService
+participant NeftRtgsClient
+Browser -> TransferService : POST /transfers/rtgs
+TransferService -> TransferService : amount >= 200000?
+TransferService -> NeftRtgsClient : send()
+TransferService --> Browser : UTR number
+@enduml

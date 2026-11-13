@@ -1,0 +1,14 @@
+@startuml lld-us10-activity
+title LLD-US10 Get a statement for a date range: activity diagram
+skinparam monochrome true
+start
+:Read dates;
+if (Within 12 months?) then (yes)
+else (no)
+  :Show error;
+  stop
+endif
+:Query transactions;
+:Show with running balance;
+stop
+@enduml

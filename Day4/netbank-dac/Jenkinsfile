@@ -1,0 +1,111 @@
+// NetBank Docs-as-Code pipeline.
+// Runs the acceptance tests, sends the results to Codebeamer, draws the PlantUML
+// diagrams, and builds the PDF documents. Every PDF is kept with the build.
+pipeline {
+  agent any
+
+  parameters {
+    choice(name: 'CODEBEAMER', choices: ['practice', 'none', 'real'],
+           description: 'practice = start ci/practice_server.py on this agent; none = offline; real = use CB_REAL_URL and the "codebeamer" credential')
+    string(name: 'CB_REAL_URL', defaultValue: 'https://your-server/cb/api/v3',
+           description: 'REST API root of your Codebeamer server (used only when CODEBEAMER = real)')
+  }
+
+  options {
+    timestamps()
+    buildDiscarder(logRotator(numToKeepStr: '20'))
+  }
+
+  environment {
+    PIP_DISABLE_PIP_VERSION_CHECK = '1'
+    PYTHONUNBUFFERED = '1'
+  }
+
+  stages {
+    stage('Set up Python') {
+      steps {
+        sh '''
+          python3 -m venv .venv
+          . .venv/bin/activate
+          pip install -q -r requirements.txt
+          python3 --version
+          plantuml -version | head -1
+        '''
+      }
+    }
+
+    stage('Start practice server') {
+      when { expression { params.CODEBEAMER == 'practice' } }
+      steps {
+        sh '''
+          . .venv/bin/activate
+          # JENKINS_NODE_COOKIE stops Jenkins from killing the server when this step ends.
+          JENKINS_NODE_COOKIE=dontKillMe nohup python3 ci/practice_server.py 8090 > build-practice-server.log 2>&1 &
+          echo $! > practice-server.pid
+          sleep 2
+          curl -sf -H "Authorization: Bearer nb-practice-token" http://localhost:8090/api/v3/projects
+        '''
+      }
+    }
+
+    stage('Pull status from Codebeamer') {
+      when { expression { params.CODEBEAMER != 'none' } }
+      steps {
+        script { withCodebeamer { sh '. .venv/bin/activate && python3 ci/pull_status.py data/netbank.json' } }
+      }
+    }
+
+    stage('Acceptance tests') {
+      steps {
+        // A failing test must not stop the pipeline: the PDF test report still has to be built.
+        sh '''
+          . .venv/bin/activate
+          mkdir -p build/test-results
+          python3 -m pytest --junitxml=build/test-results/junit.xml || true
+        '''
+        junit 'build/test-results/junit.xml'
+      }
+    }
+
+    stage('Report results to Codebeamer') {
+      steps {
+        script {
+          withCodebeamer {
+            sh '. .venv/bin/activate && python3 ci/report_test_results.py build/test-results/junit.xml "NetBank build ${BUILD_NUMBER}"'
+          }
+        }
+      }
+    }
+
+    stage('Diagrams and PDF documents') {
+      steps {
+        sh '. .venv/bin/activate && python3 docs/build_docs.py'
+      }
+    }
+  }
+
+  post {
+    always {
+      archiveArtifacts artifacts: 'build/docs/*.pdf, build/diagrams/*.png, build/test-results/*', allowEmptyArchive: true
+      sh 'if [ -f practice-server.pid ]; then kill $(cat practice-server.pid) || true; rm -f practice-server.pid; fi'
+    }
+    unstable {
+      echo 'Some acceptance tests failed. Open NetBank-Test-Report.pdf in the build artifacts.'
+    }
+  }
+}
+
+// Runs the body with CB_URL and a login for the chosen Codebeamer server.
+// With CODEBEAMER = none, CB_URL stays empty and the scripts work offline.
+def withCodebeamer(Closure body) {
+  if (params.CODEBEAMER == 'practice') {
+    withEnv(['CB_URL=http://localhost:8090/api/v3', 'CB_TOKEN=nb-practice-token']) { body() }
+  } else if (params.CODEBEAMER == 'real') {
+    withCredentials([usernamePassword(credentialsId: 'codebeamer',
+                                      usernameVariable: 'CB_USER', passwordVariable: 'CB_PASSWORD')]) {
+      withEnv(["CB_URL=${params.CB_REAL_URL}"]) { body() }
+    }
+  } else {
+    withEnv(['CB_URL=']) { body() }
+  }
+}

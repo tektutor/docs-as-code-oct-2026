@@ -1,0 +1,15 @@
+@startuml lld-us12-activity
+title LLD-US12 Receive a monthly e-statement: activity diagram
+skinparam monochrome true
+start
+:Start on the 1st, 02:00;
+:Load next 500 subscribers;
+:Mail each PDF;
+if (All subscribers done?) then (yes)
+else (no)
+  :Next batch of 500;
+  stop
+endif
+:Write job report;
+stop
+@enduml

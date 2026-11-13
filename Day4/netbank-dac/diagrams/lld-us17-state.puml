@@ -1,0 +1,14 @@
+@startuml lld-us17-state
+title LLD-US17 Add a beneficiary: state machine
+skinparam monochrome true
+hide empty description
+state ADDED
+state COOLING
+state ACTIVE
+state DELETED
+[*] --> ADDED
+ADDED --> COOLING : OTP confirmed
+COOLING --> ACTIVE : 24 h passed
+COOLING --> DELETED : deleted
+ACTIVE --> DELETED : deleted
+@enduml

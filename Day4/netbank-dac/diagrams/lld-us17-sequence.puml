@@ -1,0 +1,13 @@
+@startuml lld-us17-sequence
+title LLD-US17 Add a beneficiary: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant BeneficiaryService
+participant IfscDirectory
+Browser -> BeneficiaryService : POST /beneficiaries
+BeneficiaryService -> IfscDirectory : lookup(SBIN0001234)
+IfscDirectory --> BeneficiaryService : SBI, Pune
+BeneficiaryService -> BeneficiaryService : cap = 50000 for 24 h
+BeneficiaryService --> Browser : added
+@enduml

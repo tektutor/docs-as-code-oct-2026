@@ -1,0 +1,14 @@
+@startuml lld-us7-class
+title LLD-US7 View Current account details: class diagram
+skinparam monochrome true
+hide empty members
+class CurrentAccount <<entity>> {
+  balance
+  odLimit, odUsed
+  + available()
+}
+class AccountService <<service>> {
+  + details(id)
+}
+AccountService --> CurrentAccount : builds
+@enduml

@@ -1,0 +1,12 @@
+@startuml hld-5
+title HLD-5 Beneficiary architecture
+skinparam monochrome true
+left to right direction
+component "Web UI\npayee pages" as Web_UI
+component "Beneficiary service\nIFSC check\ncooling cap" as Beneficiary_service
+node "IFSC directory\nRBI bank list" as IFSC_directory <<external>>
+component "Transfer service" as Transfer_service
+Web_UI --> Beneficiary_service : HTTPS
+Beneficiary_service --> IFSC_directory
+Transfer_service ..> Beneficiary_service : cap()
+@enduml

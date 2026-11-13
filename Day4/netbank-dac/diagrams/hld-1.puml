@@ -1,0 +1,16 @@
+@startuml hld-1
+title HLD-1 Login and session architecture
+skinparam monochrome true
+left to right direction
+component "Web UI\nlogin page\nOTP page" as Web_UI
+component "API gateway\ntoken check\nidle timer" as API_gateway
+component "Auth service\npassword check\nlockout counter" as Auth_service
+component "OTP service\n6-digit OTP\n3-minute expiry" as OTP_service
+node "SMS gateway" as SMS_gateway <<external>>
+database "Customer store\npassword hash\nfailed count" as Customer_store
+Web_UI --> API_gateway : HTTPS
+API_gateway --> Auth_service
+Auth_service --> OTP_service
+OTP_service --> SMS_gateway
+Auth_service --> Customer_store
+@enduml

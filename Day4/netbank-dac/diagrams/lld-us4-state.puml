@@ -1,0 +1,13 @@
+@startuml lld-us4-state
+title LLD-US4 Lock access after 3 failed logins: state machine
+skinparam monochrome true
+hide empty description
+state OPEN
+state COUNTING
+state LOCKED
+[*] --> OPEN
+OPEN --> COUNTING : wrong password
+COUNTING --> OPEN : correct login
+COUNTING --> LOCKED : 3rd failure
+LOCKED --> OPEN : 24 h passed
+@enduml

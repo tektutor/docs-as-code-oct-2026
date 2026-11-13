@@ -1,0 +1,13 @@
+@startuml lld-us16-class
+title LLD-US16 Enforce the daily transfer limit: class diagram
+skinparam monochrome true
+hide empty members
+class LimitService <<service>> {
+  - dailyLimit = 1000000
+  + check(cust, amt)
+}
+class TransferRepo <<repository>> {
+  + sumToday(cust)
+}
+LimitService --> TransferRepo
+@enduml

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>1 How to read this document</h2>
+<p>Part 2 gives the high-level design (HLD) of each epic. Part 3 gives the low-level design (LLD)
+of each user story. Every diagram is drawn by PlantUML from a file in the <code>diagrams</code>
+folder of the repository. The caption gives the file name.</p>
+
+<h2>2 High-level design</h2>
+{% for h in d.hld %}
+<h3>{{ h.summary }}</h3>
+<p>{{ h.text }}</p>
+{% if has_png(h.diagram) %}<figure><img src="{{ png(h.diagram) }}">
+<figcaption>{{ h.key }}. Source: diagrams/{{ h.diagram }}.puml</figcaption></figure>{% endif %}
+{% endfor %}
+
+<h2>3 Low-level design</h2>
+{% for s in d.stories %}
+<section class="story">
+<h3>{{ s.lld.key }} {{ s.summary }}</h3>
+<table class="meta">
+<tr><th>User story</th><td>{{ s.key }}: {{ s.story }}</td></tr>
+<tr><th>Epic</th><td>{{ s.epic }} {{ epics[s.epic].summary }}</td></tr>
+<tr><th>Module</th><td class="mono">{{ s.lld.module }}</td></tr>
+<tr><th>Status</th><td>{{ s.status }}</td></tr>
+</table>
+<p>{{ s.lld.text }}</p>
+{% for g in s.lld.diagrams %}{% if has_png(g) %}
+<figure><img src="{{ png(g) }}"><figcaption>Source: diagrams/{{ g }}.puml</figcaption></figure>
+{% endif %}{% endfor %}
+</section>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+@startuml lld-us12-class
+title LLD-US12 Receive a monthly e-statement: class diagram
+skinparam monochrome true
+hide empty members
+class MonthEndJob <<job>> {
+  - batch = 500
+  + run()
+}
+class StatementService <<service>> {
+  + pdf()
+}
+class MailGateway <<external>> {
+  + send()
+}
+MonthEndJob --> StatementService
+MonthEndJob --> MailGateway
+@enduml

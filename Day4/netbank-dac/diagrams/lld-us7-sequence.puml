@@ -1,0 +1,13 @@
+@startuml lld-us7-sequence
+title LLD-US7 View Current account details: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant AccountService
+participant CbsAdapter
+participant CurrentAccount
+Browser -> AccountService : GET /accounts/{id}
+AccountService -> CbsAdapter : details(id)
+AccountService -> CurrentAccount : available()
+AccountService --> Browser : details
+@enduml

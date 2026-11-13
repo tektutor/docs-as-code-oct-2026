@@ -1,0 +1,13 @@
+@startuml lld-us6-class
+title LLD-US6 View Savings account details: class diagram
+skinparam monochrome true
+hide empty members
+class AccountService <<service>> {
+  + details(id)
+}
+class SavingsAccount <<entity>> {
+  rate, nominee,
+  ifsc, branch
+}
+AccountService --> SavingsAccount : builds
+@enduml

@@ -1,0 +1,15 @@
+@startuml lld-us3-class
+title LLD-US3 End the session after 5 idle minutes: class diagram
+skinparam monochrome true
+hide empty members
+class SessionFilter <<filter>> {
+  - idleMs = 300000
+  + check(token)
+}
+class SessionStore <<cache>> {
+  lastActivity
+  + touch(token)
+  + expire(token)
+}
+SessionFilter --> SessionStore
+@enduml

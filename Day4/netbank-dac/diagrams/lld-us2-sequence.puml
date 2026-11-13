@@ -1,0 +1,15 @@
+@startuml lld-us2-sequence
+title LLD-US2 Confirm login with an OTP: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant AuthService
+participant OtpService
+participant SmsGateway
+AuthService -> OtpService : send(mobile)
+OtpService -> SmsGateway : send(OTP)
+Browser -> AuthService : POST /otp/verify
+AuthService -> OtpService : check(otp)
+OtpService --> AuthService : valid
+AuthService --> Browser : session token
+@enduml

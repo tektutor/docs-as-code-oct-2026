@@ -1,0 +1,17 @@
+@startuml lld-us14-state
+title LLD-US14 Send money by IMPS: state machine
+skinparam monochrome true
+hide empty description
+state INITIATED
+state OTP_PENDING
+state SUBMITTED
+state SUCCESS
+state FAILED
+[*] --> INITIATED
+INITIATED --> OTP_PENDING : limit ok
+OTP_PENDING --> SUBMITTED : OTP correct
+OTP_PENDING --> FAILED : OTP wrong 3 times
+SUBMITTED --> SUCCESS : NPCI success
+SUBMITTED --> FAILED : NPCI reject
+SUBMITTED --> FAILED : no reply in 60 s
+@enduml

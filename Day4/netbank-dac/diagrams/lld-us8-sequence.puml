@@ -1,0 +1,13 @@
+@startuml lld-us8-sequence
+title LLD-US8 View Personal loan details: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant AccountService
+participant CbsAdapter
+participant LoanAccount
+Browser -> AccountService : GET /loans/{id}
+AccountService -> CbsAdapter : schedule(id)
+AccountService -> LoanAccount : remaining()
+AccountService --> Browser : loan details
+@enduml

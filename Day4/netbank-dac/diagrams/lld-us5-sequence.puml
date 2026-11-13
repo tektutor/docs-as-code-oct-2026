@@ -1,0 +1,14 @@
+@startuml lld-us5-sequence
+title LLD-US5 See all accounts and balances: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant AccountController
+participant AccountService
+participant CbsAdapter
+Browser -> AccountController : GET /accounts
+AccountController -> AccountService : accounts(cust)
+AccountService -> CbsAdapter : accounts(cust)
+CbsAdapter --> AccountService : 3 accounts
+AccountController --> Browser : JSON list
+@enduml

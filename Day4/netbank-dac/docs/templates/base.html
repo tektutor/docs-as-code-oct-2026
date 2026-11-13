@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>{{ title }}</title>
+<link rel="stylesheet" href="style.css"></head>
+<body>
+<div class="buildinfo">Build {{ build }} · commit {{ commit }} · {{ today }}</div>
+<section class="cover">
+  <h1>{{ title }}</h1>
+  <div class="sub">{{ d.release.name }} · project {{ d.project }}</div>
+  <table class="meta">
+    <tr><th>Document</th><td>{{ title }}</td></tr>
+    <tr><th>Release</th><td>{{ d.release.name }} ({{ d.release.start }} to {{ d.release.end }})</td></tr>
+    <tr><th>Jenkins build</th><td>{{ build }}</td></tr>
+    <tr><th>Git commit</th><td class="mono">{{ commit }}</td></tr>
+    <tr><th>Statuses from</th><td class="mono">{{ cb_url }}</td></tr>
+    <tr><th>Generated</th><td>{{ today }}, by docs/build_docs.py. Do not edit this PDF: change the source in Git.</td></tr>
+  </table>
+</section>
+{% block body %}{% endblock %}
+</body></html>

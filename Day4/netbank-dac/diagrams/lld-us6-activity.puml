@@ -1,0 +1,10 @@
+@startuml lld-us6-activity
+title LLD-US6 View Savings account details: activity diagram
+skinparam monochrome true
+start
+:Open account;
+:Read details from CBS;
+:Mask nominee;
+:Show details;
+stop
+@enduml

@@ -1,0 +1,15 @@
+@startuml hld-6
+title HLD-6 Bills and alerts architecture
+skinparam monochrome true
+left to right direction
+component "Web UI\nbill page" as Web_UI
+component "Payment service\nfetch bill\npay bill" as Payment_service
+node "BBPS aggregator\nbillers" as BBPS_aggregator <<external>>
+component "Notification service\ndebit events" as Notification_service
+node "SMS gateway" as SMS_gateway <<external>>
+node "Mail gateway" as Mail_gateway <<external>>
+Web_UI --> Payment_service : HTTPS
+Payment_service --> BBPS_aggregator
+Notification_service --> SMS_gateway
+Notification_service --> Mail_gateway
+@enduml

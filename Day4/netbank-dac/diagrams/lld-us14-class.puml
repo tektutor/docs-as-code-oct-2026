@@ -1,0 +1,19 @@
+@startuml lld-us14-class
+title LLD-US14 Send money by IMPS: class diagram
+skinparam monochrome true
+hide empty members
+class TransferService <<service>> {
+  - status
+  + create()
+  + confirm(otp)
+}
+class LimitService <<service>> {
+  + check(cust, amt)
+}
+class ImpsClient <<adapter>> {
+  + send(req)
+  + status(ref)
+}
+TransferService --> LimitService
+TransferService --> ImpsClient
+@enduml

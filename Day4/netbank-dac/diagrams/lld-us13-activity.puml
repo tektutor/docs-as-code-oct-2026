@@ -1,0 +1,14 @@
+@startuml lld-us13-activity
+title LLD-US13 Transfer between my own accounts: activity diagram
+skinparam monochrome true
+start
+:Read accounts and amount;
+if (Balance enough?) then (yes)
+else (no)
+  :Show "Insufficient balance";
+  stop
+endif
+:Post debit and credit;
+:Show reference;
+stop
+@enduml

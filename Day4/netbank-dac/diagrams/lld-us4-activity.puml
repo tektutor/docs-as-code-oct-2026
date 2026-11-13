@@ -1,0 +1,14 @@
+@startuml lld-us4-activity
+title LLD-US4 Lock access after 3 failed logins: activity diagram
+skinparam monochrome true
+start
+:Wrong password entered;
+:Increase failed count;
+if (Count below 3?) then (yes)
+else (no)
+  :Lock for 24 hours, send SMS;
+  stop
+endif
+:Show "Invalid customer ID or password";
+stop
+@enduml

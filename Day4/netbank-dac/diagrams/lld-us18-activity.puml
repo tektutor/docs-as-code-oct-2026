@@ -1,0 +1,13 @@
+@startuml lld-us18-activity
+title LLD-US18 Delete a beneficiary: activity diagram
+skinparam monochrome true
+start
+:Select payee;
+if (No pending transfer?) then (yes)
+else (no)
+  :Show "Wait for pending transfer";
+  stop
+endif
+:Soft delete, write audit log;
+stop
+@enduml

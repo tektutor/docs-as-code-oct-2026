@@ -1,0 +1,11 @@
+@startuml lld-us9-sequence
+title LLD-US9 See a mini statement: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant StatementService
+participant CbsAdapter
+Browser -> StatementService : GET /statement?limit=10
+StatementService -> CbsAdapter : transactions(acc, 10)
+StatementService --> Browser : 10 rows
+@enduml

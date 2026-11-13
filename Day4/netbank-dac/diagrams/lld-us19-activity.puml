@@ -1,0 +1,10 @@
+@startuml lld-us19-activity
+title LLD-US19 Pay an electricity bill: activity diagram
+skinparam monochrome true
+start
+:Fetch bill;
+:Confirm amount;
+:Debit account;
+:Show receipt;
+stop
+@enduml

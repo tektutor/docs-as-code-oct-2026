@@ -1,0 +1,14 @@
+@startuml lld-us3-activity
+title LLD-US3 End the session after 5 idle minutes: activity diagram
+skinparam monochrome true
+start
+:API call arrives;
+if (Idle under 5 minutes?) then (yes)
+else (no)
+  :Expire session, open login page;
+  stop
+endif
+:Reset idle timer;
+:Process the call;
+stop
+@enduml

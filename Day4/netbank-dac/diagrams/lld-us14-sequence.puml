@@ -1,0 +1,15 @@
+@startuml lld-us14-sequence
+title LLD-US14 Send money by IMPS: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant TransferService
+participant LimitService
+participant ImpsClient
+Browser -> TransferService : POST /transfers/imps
+TransferService -> LimitService : check(20000)
+Browser -> TransferService : confirm(OTP)
+TransferService -> ImpsClient : send()
+ImpsClient --> TransferService : ref, SUCCESS
+TransferService --> Browser : Success
+@enduml

@@ -1,0 +1,20 @@
+@startuml lld-us4-class
+title LLD-US4 Lock access after 3 failed logins: class diagram
+skinparam monochrome true
+hide empty members
+class AuthService <<service>> {
+  + checkPassword()
+}
+class Lockout <<component>> {
+  - maxFailures = 3
+  - lockHours = 24
+  + fail(id)
+  + reset(id)
+  + isLocked(id)
+}
+class SmsGateway <<external>> {
+  + send()
+}
+AuthService --> Lockout
+Lockout ..> SmsGateway : notifies
+@enduml

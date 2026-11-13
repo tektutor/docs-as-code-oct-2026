@@ -1,0 +1,16 @@
+@startuml hld-4
+title HLD-4 Fund transfer architecture
+skinparam monochrome true
+left to right direction
+component "Web UI\ntransfer form" as Web_UI
+component "Transfer service\nlimit check\nstatus tracking" as Transfer_service
+component "Limit service\ndaily total" as Limit_service
+component "CBS adapter" as CBS_adapter
+node "IMPS switch\nNPCI" as IMPS_switch <<external>>
+node "NEFT/RTGS gateway\nRBI" as NEFT_RTGS_gateway <<external>>
+Web_UI --> Transfer_service : HTTPS
+Transfer_service --> Limit_service
+Transfer_service --> CBS_adapter
+Transfer_service --> IMPS_switch
+Transfer_service --> NEFT_RTGS_gateway
+@enduml

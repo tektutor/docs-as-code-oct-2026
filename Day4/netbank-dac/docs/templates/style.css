@@ -1,0 +1,41 @@
+@font-face { font-family: "Plex Sans"; src: url("../fonts/IBMPlexSans-Regular.ttf"); }
+@font-face { font-family: "Plex Sans"; font-weight: bold; src: url("../fonts/IBMPlexSans-Bold.ttf"); }
+@font-face { font-family: "Plex Sans"; font-style: italic; src: url("../fonts/IBMPlexSans-Italic.ttf"); }
+@font-face { font-family: "Plex Mono"; src: url("../fonts/IBMPlexMono-Regular.ttf"); }
+
+@page {
+  size: A4; margin: 22mm 18mm 20mm 18mm;
+  @top-left { content: string(doctitle); font: 8pt "Plex Sans"; color: #444; }
+  @top-right { content: "NETBANK-DEMO"; font: 8pt "Plex Sans"; color: #444; }
+  @bottom-left { content: string(buildinfo); font: 8pt "Plex Sans"; color: #444; }
+  @bottom-right { content: "Page " counter(page) " of " counter(pages); font: 8pt "Plex Sans"; color: #444; }
+}
+@page :first { @top-left { content: none; } @top-right { content: none; } }
+
+html { font: 10pt/1.45 "Plex Sans"; color: #000; }
+h1 { font-size: 22pt; margin: 0 0 4mm; string-set: doctitle content(); }
+h2 { font-size: 14pt; margin: 8mm 0 2mm; border-bottom: 1.2pt solid #000; padding-bottom: 1mm;
+     page-break-after: avoid; }
+h3 { font-size: 11pt; margin: 5mm 0 1.5mm; page-break-after: avoid; }
+p { margin: 0 0 2mm; }
+code, .mono { font-family: "Plex Mono"; font-size: 8.5pt; }
+.cover { border-top: 3pt solid #000; padding-top: 6mm; margin-bottom: 8mm; }
+.cover .sub { font-size: 12pt; margin-bottom: 6mm; }
+.buildinfo { string-set: buildinfo content(); font-size: 0; height: 0; }
+table { width: 100%; border-collapse: collapse; margin: 2mm 0 4mm; font-size: 8.8pt; }
+th, td { border: 0.6pt solid #000; padding: 1.2mm 1.6mm; text-align: left; vertical-align: top; }
+th { background: #e6e6e6; font-weight: bold; }
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+table.meta { width: auto; font-size: 9.5pt; }
+table.meta th { width: 38mm; }
+.FAILED { font-weight: bold; text-decoration: underline; }
+.NOT-RUN, .NO-TEST { font-style: italic; }
+.box { border: 0.8pt solid #000; padding: 2.5mm 3mm; margin: 2mm 0 4mm; page-break-inside: avoid; }
+figure { margin: 3mm 0 5mm; text-align: center; page-break-inside: avoid; }
+figure img { max-width: 88%; max-height: 92mm; }
+figcaption { font-size: 8.5pt; font-style: italic; margin-top: 1.5mm; }
+.story { margin-top: 8mm; }
+.story h3 { font-size: 12pt; border-top: 0.8pt solid #000; padding-top: 2mm; }
+.small { font-size: 8.5pt; }
+.totals td { font-size: 11pt; text-align: center; }

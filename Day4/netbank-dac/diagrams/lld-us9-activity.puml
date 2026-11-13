@@ -1,0 +1,10 @@
+@startuml lld-us9-activity
+title LLD-US9 See a mini statement: activity diagram
+skinparam monochrome true
+start
+:Request last 10;
+:Read from CBS;
+:Sort newest first;
+:Show rows;
+stop
+@enduml

@@ -1,0 +1,14 @@
+@startuml lld-us17-activity
+title LLD-US17 Add a beneficiary: activity diagram
+skinparam monochrome true
+start
+:Enter account number twice and IFSC;
+if (IFSC known?) then (yes)
+else (no)
+  :Show "Unknown IFSC code";
+  stop
+endif
+:Confirm with OTP;
+:Save payee with INR 50,000 cap for 24 hours;
+stop
+@enduml

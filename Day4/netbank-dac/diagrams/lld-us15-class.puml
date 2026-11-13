@@ -1,0 +1,12 @@
+@startuml lld-us15-class
+title LLD-US15 Send money by NEFT or RTGS: class diagram
+skinparam monochrome true
+hide empty members
+class TransferService <<service>> {
+  + create(mode)
+}
+class NeftRtgsClient <<adapter>> {
+  + send(req)
+}
+TransferService --> NeftRtgsClient
+@enduml

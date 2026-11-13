@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>1 Requirement to test</h2>
+<p>Each row follows one system requirement down to its user stories and acceptance tests, with the
+result of the last test run. A requirement is covered only when every one of its tests passed.</p>
+<table><thead><tr><th>Requirement</th><th>User stories</th><th>Acceptance tests</th><th>Verdict</th></tr></thead>
+{% for r in d.requirements %}<tr>
+<td><b>{{ r.key }}</b><br>{{ r.summary }}</td>
+<td>{% for s in r.stories %}{{ s.key }} ({{ s.status }}){% if not loop.last %}<br>{% endif %}{% else %}none{% endfor %}</td>
+<td>{% for t in r.tests %}<span class="{{ t.result|replace(' ', '-') }}">{{ t.key }}</span>{% if not loop.last %}<br>{% endif %}{% else %}none{% endfor %}</td>
+<td class="{{ r.verdict|replace(' ', '-') }}">{{ r.verdict }}</td></tr>{% endfor %}
+</table>
+
+<h2>2 Gaps</h2>
+{% set gaps = d.requirements|selectattr("verdict", "ne", "PASSED")|list %}
+{% if gaps %}<ul>{% for r in gaps %}<li>{{ r.key }} {{ r.summary }}: {{ r.verdict }}</li>{% endfor %}</ul>
+{% else %}<p>No gaps. Every requirement has passing tests.</p>{% endif %}
+
+<h2>3 Story to epic</h2>
+<table><thead><tr><th>Story</th><th>Summary</th><th>Epic</th><th>Sprint</th><th>Points</th><th>Status</th></tr></thead>
+{% for s in d.stories %}<tr><td>{{ s.key }}</td><td>{{ s.summary }}</td><td>{{ s.epic }}</td>
+<td>{{ s.sprint or "Backlog" }}</td><td>{{ s.points }}</td><td>{{ s.status }}</td></tr>{% endfor %}</table>
+{% endblock %}

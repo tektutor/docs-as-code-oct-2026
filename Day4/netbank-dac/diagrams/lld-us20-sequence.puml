@@ -1,0 +1,11 @@
+@startuml lld-us20-sequence
+title LLD-US20 Get an alert on every debit: sequence diagram
+skinparam monochrome true
+autonumber
+participant CBS
+participant DebitListener
+participant NotificationService
+CBS -> DebitListener : debit event
+DebitListener -> NotificationService : sms(text)
+DebitListener -> NotificationService : mail(text)
+@enduml

@@ -1,0 +1,14 @@
+@startuml lld-us8-activity
+title LLD-US8 View Personal loan details: activity diagram
+skinparam monochrome true
+start
+:Open loan;
+:Read schedule;
+if (EMI overdue?) then (yes)
+else (no)
+  :Show normal;
+  stop
+endif
+:Mark in red;
+stop
+@enduml

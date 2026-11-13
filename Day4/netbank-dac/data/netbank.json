@@ -1,0 +1,885 @@
+{
+ "project": "NETBANK-DEMO",
+ "release": {
+  "k": "NB10",
+  "name": "NetBank 1.0",
+  "start": "2026-10-19",
+  "end": "2026-12-04",
+  "desc": "First release of the retail net-banking portal: secure login, accounts overview, statements, fund transfer, beneficiaries, bill payment and alerts."
+ },
+ "sprints": [
+  {
+   "key": "NS1",
+   "name": "NetBank Sprint 1",
+   "start": "2026-10-19",
+   "end": "2026-10-30",
+   "goal": "Customers can log in securely and see their accounts."
+  },
+  {
+   "key": "NS2",
+   "name": "NetBank Sprint 2",
+   "start": "2026-11-02",
+   "end": "2026-11-13",
+   "goal": "Account details, mini statement, own-account transfer, and adding beneficiaries."
+  },
+  {
+   "key": "NS3",
+   "name": "NetBank Sprint 3",
+   "start": "2026-11-16",
+   "end": "2026-11-27",
+   "goal": "Loan details, statements by date, IMPS transfer, daily limit, and debit alerts."
+  }
+ ],
+ "requirements": [
+  {
+   "key": "NB-SR1",
+   "summary": "Two-factor login",
+   "text": "The portal shall authenticate a customer with customer ID, password, and a 6-digit one-time password (OTP) sent to the registered mobile number. The OTP shall expire after 3 minutes.",
+   "rationale": "RBI guidelines require additional factor authentication for internet banking.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR2",
+   "summary": "Session timeout",
+   "text": "The portal shall end a session after 5 minutes without user activity and warn the customer 60 seconds before.",
+   "rationale": "An unattended session on a shared computer exposes the account.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR3",
+   "summary": "Login lockout",
+   "text": "The portal shall lock net-banking access for 24 hours after 3 consecutive failed password attempts and notify the customer by SMS.",
+   "rationale": "Limits password guessing.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR4",
+   "summary": "Account overview",
+   "text": "The portal shall show every Savings, Current, and Personal loan account of the customer with the available balance as held in the core banking system.",
+   "rationale": "The overview is the landing page after login.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR5",
+   "summary": "Statement period",
+   "text": "The portal shall show transactions for any date range within the last 12 months, newest first, with running balance.",
+   "rationale": "Customers need statements for tax returns and loan applications.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR6",
+   "summary": "PDF statement",
+   "text": "The portal shall generate a statement as PDF, protected with a password made of the first 4 letters of the name and the date of birth (DDMM).",
+   "rationale": "A downloaded statement must not be readable by others.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR7",
+   "summary": "Own-account transfer",
+   "text": "The portal shall transfer funds between accounts of the same customer instantly, without OTP, 24 hours a day.",
+   "rationale": "Low risk: the money stays with the customer.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR8",
+   "summary": "IMPS transfer",
+   "text": "The portal shall send IMPS transfers to a registered beneficiary 24 hours a day, up to INR 5,00,000 per transaction, after OTP confirmation.",
+   "rationale": "IMPS per-transaction limit set by NPCI.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR9",
+   "summary": "NEFT and RTGS transfer",
+   "text": "The portal shall send NEFT transfers of any amount and RTGS transfers of INR 2,00,000 or more to a registered beneficiary, after OTP confirmation.",
+   "rationale": "RTGS minimum amount set by RBI.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR10",
+   "summary": "Daily transfer limit",
+   "text": "The portal shall reject a third-party transfer that would take the total of the day above the customer limit (default INR 10,00,000).",
+   "rationale": "Caps the loss if credentials are stolen.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR11",
+   "summary": "Beneficiary cooling period",
+   "text": "After a beneficiary is added, the portal shall allow at most INR 50,000 in total to that beneficiary during the first 24 hours.",
+   "rationale": "Limits fraud with newly added beneficiaries.",
+   "status": "Accepted"
+  },
+  {
+   "key": "NB-SR12",
+   "summary": "Debit alert",
+   "text": "The portal shall send an SMS and an e-mail within 60 seconds of every debit, with amount, account (last 4 digits), and available balance.",
+   "rationale": "Customers detect unauthorized debits early.",
+   "status": "Accepted"
+  }
+ ],
+ "epics": [
+  {
+   "key": "EP1",
+   "summary": "Secure login",
+   "goal": "Customers log in safely and the bank meets RBI authentication rules.",
+   "measure": "Login success rate at least 98 %; zero account takeovers.",
+   "hld": "HLD-1"
+  },
+  {
+   "key": "EP2",
+   "summary": "Accounts overview",
+   "goal": "Customers see all their accounts and balances on one page.",
+   "measure": "80 % of logins open the overview without a branch call.",
+   "hld": "HLD-2"
+  },
+  {
+   "key": "EP3",
+   "summary": "Account statements",
+   "goal": "Customers get statements without visiting a branch.",
+   "measure": "Branch statement requests down 60 %.",
+   "hld": "HLD-3"
+  },
+  {
+   "key": "EP4",
+   "summary": "Fund transfer",
+   "goal": "Customers move money to own and third-party accounts at any time.",
+   "measure": "40 % of transfers made online within 6 months.",
+   "hld": "HLD-4"
+  },
+  {
+   "key": "EP5",
+   "summary": "Beneficiary management",
+   "goal": "Customers manage payees safely.",
+   "measure": "No fraud loss on beneficiaries added in the last 24 hours.",
+   "hld": "HLD-5"
+  },
+  {
+   "key": "EP6",
+   "summary": "Bill payments and alerts",
+   "goal": "Customers pay bills and know about every debit.",
+   "measure": "Alerts delivered within 60 seconds for 99 % of debits.",
+   "hld": "HLD-6"
+  }
+ ],
+ "hld": [
+  {
+   "key": "HLD-1",
+   "summary": "HLD-1 Login and session architecture",
+   "text": "The UI calls the API gateway. The Auth service checks the password hash in the customer store, asks the OTP service to send an OTP through the SMS gateway, and issues a session token. The gateway checks the token on every call and ends idle sessions.",
+   "diagram": "hld-1"
+  },
+  {
+   "key": "HLD-2",
+   "summary": "HLD-2 Accounts overview architecture",
+   "text": "The Account service reads accounts and balances from the core banking system (CBS) through its adapter and caches them for 30 seconds.",
+   "diagram": "hld-2"
+  },
+  {
+   "key": "HLD-3",
+   "summary": "HLD-3 Statements architecture",
+   "text": "The Statement service queries transactions from the CBS adapter, renders PDF files with a password, and a nightly job e-mails monthly statements.",
+   "diagram": "hld-3"
+  },
+  {
+   "key": "HLD-4",
+   "summary": "HLD-4 Fund transfer architecture",
+   "text": "The Transfer service checks the limit, asks for an OTP, posts the debit in CBS, and routes the credit: internally for own accounts, to the NPCI IMPS switch, or to the RBI NEFT/RTGS gateway.",
+   "diagram": "hld-4"
+  },
+  {
+   "key": "HLD-5",
+   "summary": "HLD-5 Beneficiary architecture",
+   "text": "The Beneficiary service validates the IFSC code, stores the payee, and keeps the 24-hour cooling cap that the Transfer service checks.",
+   "diagram": "hld-5"
+  },
+  {
+   "key": "HLD-6",
+   "summary": "HLD-6 Bills and alerts architecture",
+   "text": "The Payment service fetches bills from the biller aggregator (BBPS) and pays them through the Transfer service. The Notification service listens to CBS debit events and sends SMS and e-mail.",
+   "diagram": "hld-6"
+  }
+ ],
+ "stories": [
+  {
+   "key": "US1",
+   "epic": "EP1",
+   "summary": "Log in with customer ID and password",
+   "story": "As a retail customer, I want to log in with my customer ID and password, so that I can use net banking from home.",
+   "points": 5,
+   "sprint": "NetBank Sprint 1",
+   "status": "Done",
+   "requirements": [
+    "NB-SR1"
+   ],
+   "lld": {
+    "key": "LLD-US1",
+    "module": "auth/login_controller.ts",
+    "text": "Password hashes use bcrypt cost 12. The controller never says which of ID or password was wrong. A correct password creates a pre-session that is valid only for the OTP step.",
+    "diagrams": [
+     "lld-us1-class",
+     "lld-us1-sequence",
+     "lld-us1-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-1.1",
+     "name": "Valid password",
+     "given": "customer 10023456 with a correct password",
+     "when": "the customer submits the login form",
+     "then": "the OTP page opens"
+    },
+    {
+     "key": "AT-1.2",
+     "name": "Wrong password",
+     "given": "a wrong password",
+     "when": "the customer submits the login form",
+     "then": "\"Invalid customer ID or password\" is shown and the failed count is 1"
+    }
+   ]
+  },
+  {
+   "key": "US2",
+   "epic": "EP1",
+   "summary": "Confirm login with an OTP",
+   "story": "As a retail customer, I want to confirm my login with an OTP on my phone, so that nobody can log in with a stolen password.",
+   "points": 5,
+   "sprint": "NetBank Sprint 1",
+   "status": "Done",
+   "requirements": [
+    "NB-SR1"
+   ],
+   "lld": {
+    "key": "LLD-US2",
+    "module": "auth/otp_service.ts",
+    "text": "6-digit OTP from a secure random generator, stored as a hash with its expiry. 3 wrong OTPs end the pre-session.",
+    "diagrams": [
+     "lld-us2-class",
+     "lld-us2-sequence",
+     "lld-us2-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-2.1",
+     "name": "OTP accepted",
+     "given": "an OTP was sent to the registered mobile",
+     "when": "the customer enters it within 3 minutes",
+     "then": "the accounts overview opens"
+    },
+    {
+     "key": "AT-2.2",
+     "name": "OTP expired",
+     "given": "an OTP older than 3 minutes",
+     "when": "the customer enters it",
+     "then": "\"OTP expired\" is shown with a Resend link"
+    }
+   ]
+  },
+  {
+   "key": "US3",
+   "epic": "EP1",
+   "summary": "End the session after 5 idle minutes",
+   "story": "As a retail customer, I want my session to end when I walk away, so that nobody uses my account on a shared computer.",
+   "points": 3,
+   "sprint": "NetBank Sprint 1",
+   "status": "Done",
+   "requirements": [
+    "NB-SR2"
+   ],
+   "lld": {
+    "key": "LLD-US3",
+    "module": "gateway/session_filter.ts",
+    "text": "The gateway stores last activity per token. The UI shows the warning at 4 minutes. Any API call resets the timer.",
+    "diagrams": [
+     "lld-us3-class",
+     "lld-us3-sequence",
+     "lld-us3-activity",
+     "lld-us3-state"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-3.1",
+     "name": "Warning shown",
+     "given": "a session idle for 4 minutes",
+     "when": "one more minute passes without activity",
+     "then": "a warning with \"Stay logged in\" appears"
+    },
+    {
+     "key": "AT-3.2",
+     "name": "Session ended",
+     "given": "a session idle for 5 minutes",
+     "when": "the customer clicks any link",
+     "then": "the login page opens with \"Your session has ended\""
+    }
+   ]
+  },
+  {
+   "key": "US4",
+   "epic": "EP1",
+   "summary": "Lock access after 3 failed logins",
+   "story": "As a bank security officer, I want access locked after 3 wrong passwords, so that nobody can guess passwords.",
+   "points": 3,
+   "sprint": "NetBank Sprint 1",
+   "status": "Done",
+   "requirements": [
+    "NB-SR3"
+   ],
+   "lld": {
+    "key": "LLD-US4",
+    "module": "auth/lockout.ts",
+    "text": "failedCount and lockedUntil are columns of the customer table. Unlock happens automatically after 24 hours or at a branch.",
+    "diagrams": [
+     "lld-us4-class",
+     "lld-us4-sequence",
+     "lld-us4-activity",
+     "lld-us4-state"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-4.1",
+     "name": "Lock after 3 failures",
+     "given": "2 failed attempts today",
+     "when": "the customer enters a wrong password again",
+     "then": "access is locked for 24 hours and an SMS is sent"
+    },
+    {
+     "key": "AT-4.2",
+     "name": "Counter reset",
+     "given": "2 failed attempts",
+     "when": "the customer logs in correctly",
+     "then": "the failed count is 0"
+    }
+   ]
+  },
+  {
+   "key": "US5",
+   "epic": "EP2",
+   "summary": "See all accounts and balances",
+   "story": "As a retail customer, I want all my accounts and balances on one page, so that I know how much money I have.",
+   "points": 5,
+   "sprint": "NetBank Sprint 1",
+   "status": "Done",
+   "requirements": [
+    "NB-SR4"
+   ],
+   "lld": {
+    "key": "LLD-US5",
+    "module": "accounts/overview.ts",
+    "text": "Accounts are grouped by type: deposits first, loans last. Balances are cached 30 seconds.",
+    "diagrams": [
+     "lld-us5-class",
+     "lld-us5-sequence",
+     "lld-us5-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-5.1",
+     "name": "Three account types",
+     "given": "a customer with one Savings, one Current, and one Personal loan account",
+     "when": "the overview opens",
+     "then": "3 rows with type, number (last 4 digits), and balance are shown"
+    }
+   ]
+  },
+  {
+   "key": "US6",
+   "epic": "EP2",
+   "summary": "View Savings account details",
+   "story": "As a retail customer, I want interest rate, nominee, and branch of my Savings account, so that I can check my account data.",
+   "points": 3,
+   "sprint": "NetBank Sprint 2",
+   "status": "Done",
+   "requirements": [
+    "NB-SR4"
+   ],
+   "lld": {
+    "key": "LLD-US6",
+    "module": "accounts/savings_details.ts",
+    "text": "Read-only view. The nominee name is masked except the first letter.",
+    "diagrams": [
+     "lld-us6-class",
+     "lld-us6-sequence",
+     "lld-us6-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-6.1",
+     "name": "Details shown",
+     "given": "a Savings account",
+     "when": "the customer opens it",
+     "then": "interest rate, nominee, IFSC, and branch are shown"
+    }
+   ]
+  },
+  {
+   "key": "US7",
+   "epic": "EP2",
+   "summary": "View Current account details",
+   "story": "As a business customer, I want my overdraft limit and used amount, so that I can plan payments.",
+   "points": 3,
+   "sprint": "NetBank Sprint 2",
+   "status": "Done",
+   "requirements": [
+    "NB-SR4"
+   ],
+   "lld": {
+    "key": "LLD-US7",
+    "module": "accounts/current_details.ts",
+    "text": "Available = balance + overdraft limit - used overdraft.",
+    "diagrams": [
+     "lld-us7-class",
+     "lld-us7-sequence",
+     "lld-us7-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-7.1",
+     "name": "Overdraft shown",
+     "given": "a Current account with an overdraft of INR 2,00,000",
+     "when": "the customer opens it",
+     "then": "limit, used amount, and available amount are shown"
+    }
+   ]
+  },
+  {
+   "key": "US8",
+   "epic": "EP2",
+   "summary": "View Personal loan details",
+   "story": "As a loan customer, I want my EMI, outstanding amount, and next due date, so that I never miss an EMI.",
+   "points": 5,
+   "sprint": "NetBank Sprint 3",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR4"
+   ],
+   "lld": {
+    "key": "LLD-US8",
+    "module": "accounts/loan_details.ts",
+    "text": "Remaining EMIs computed from the CBS schedule. Overdue EMIs shown in red.",
+    "diagrams": [
+     "lld-us8-class",
+     "lld-us8-sequence",
+     "lld-us8-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-8.1",
+     "name": "Loan shown",
+     "given": "a Personal loan with EMI INR 12,500",
+     "when": "the customer opens it",
+     "then": "EMI, outstanding, next due date, and remaining EMIs are shown"
+    }
+   ]
+  },
+  {
+   "key": "US9",
+   "epic": "EP3",
+   "summary": "See a mini statement",
+   "story": "As a retail customer, I want my last 10 transactions, so that I can check recent debits quickly.",
+   "points": 3,
+   "sprint": "NetBank Sprint 2",
+   "status": "In progress",
+   "requirements": [
+    "NB-SR5"
+   ],
+   "lld": {
+    "key": "LLD-US9",
+    "module": "statements/mini.ts",
+    "text": "Calls the statement query with limit 10. No date range.",
+    "diagrams": [
+     "lld-us9-class",
+     "lld-us9-sequence",
+     "lld-us9-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-9.1",
+     "name": "Last 10",
+     "given": "an account with 25 transactions",
+     "when": "the customer opens the mini statement",
+     "then": "the newest 10 are shown with date, description, amount, and balance"
+    }
+   ]
+  },
+  {
+   "key": "US10",
+   "epic": "EP3",
+   "summary": "Get a statement for a date range",
+   "story": "As a retail customer, I want transactions between two dates, so that I can file my tax return.",
+   "points": 5,
+   "sprint": "NetBank Sprint 3",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR5"
+   ],
+   "lld": {
+    "key": "LLD-US10",
+    "module": "statements/range.ts",
+    "text": "Paging of 50 rows. Opening balance from the day before the start date.",
+    "diagrams": [
+     "lld-us10-class",
+     "lld-us10-sequence",
+     "lld-us10-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-10.1",
+     "name": "Range within 12 months",
+     "given": "from 2026-04-01 to 2026-09-30",
+     "when": "the customer asks for the statement",
+     "then": "all transactions of that period are shown with running balance"
+    },
+    {
+     "key": "AT-10.2",
+     "name": "Range too old",
+     "given": "a start date 14 months ago",
+     "when": "the customer asks for the statement",
+     "then": "\"Choose a date within the last 12 months\" is shown"
+    }
+   ]
+  },
+  {
+   "key": "US11",
+   "epic": "EP3",
+   "summary": "Download a statement as PDF",
+   "story": "As a retail customer, I want my statement as a password-protected PDF, so that I can send it to my loan officer.",
+   "points": 3,
+   "sprint": "",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR6"
+   ],
+   "lld": {
+    "key": "LLD-US11",
+    "module": "statements/pdf.ts",
+    "text": "PDF/A with AES-256 owner and user passwords.",
+    "diagrams": [
+     "lld-us11-class",
+     "lld-us11-sequence",
+     "lld-us11-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-11.1",
+     "name": "Protected PDF",
+     "given": "a statement on screen",
+     "when": "the customer clicks Download PDF",
+     "then": "a PDF opens only with the password NAME + DDMM"
+    }
+   ]
+  },
+  {
+   "key": "US12",
+   "epic": "EP3",
+   "summary": "Receive a monthly e-statement",
+   "story": "As a retail customer, I want my statement by e-mail every month, so that I keep records without logging in.",
+   "points": 3,
+   "sprint": "",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR6"
+   ],
+   "lld": {
+    "key": "LLD-US12",
+    "module": "statements/month_end_job.ts",
+    "text": "Runs at 02:00 on the 1st, in batches of 500 customers.",
+    "diagrams": [
+     "lld-us12-class",
+     "lld-us12-sequence",
+     "lld-us12-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-12.1",
+     "name": "Mailed on the 1st",
+     "given": "a customer subscribed to e-statements",
+     "when": "the month-end job runs on the 1st",
+     "then": "an e-mail with the protected PDF is sent"
+    }
+   ]
+  },
+  {
+   "key": "US13",
+   "epic": "EP4",
+   "summary": "Transfer between my own accounts",
+   "story": "As a retail customer, I want to move money from Savings to Current, so that I can cover a payment.",
+   "points": 5,
+   "sprint": "NetBank Sprint 2",
+   "status": "In progress",
+   "requirements": [
+    "NB-SR7"
+   ],
+   "lld": {
+    "key": "LLD-US13",
+    "module": "transfers/own_transfer.ts",
+    "text": "One CBS call posts debit and credit in the same transaction. No OTP needed.",
+    "diagrams": [
+     "lld-us13-class",
+     "lld-us13-sequence",
+     "lld-us13-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-13.1",
+     "name": "Instant transfer",
+     "given": "Savings balance INR 50,000",
+     "when": "the customer moves INR 10,000 to Current",
+     "then": "both balances change at once and a reference number is shown"
+    },
+    {
+     "key": "AT-13.2",
+     "name": "Insufficient balance",
+     "given": "Savings balance INR 5,000",
+     "when": "the customer moves INR 10,000",
+     "then": "\"Insufficient balance\" is shown and nothing is posted"
+    }
+   ]
+  },
+  {
+   "key": "US14",
+   "epic": "EP4",
+   "summary": "Send money by IMPS",
+   "story": "As a retail customer, I want to send money to a beneficiary instantly, so that the payee gets it at once.",
+   "points": 8,
+   "sprint": "NetBank Sprint 3",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR8",
+    "NB-SR10"
+   ],
+   "lld": {
+    "key": "LLD-US14",
+    "module": "transfers/imps.ts",
+    "text": "Status polling every 5 s for up to 60 s. A timeout moves the transfer to FAILED and starts a reversal check.",
+    "diagrams": [
+     "lld-us14-class",
+     "lld-us14-sequence",
+     "lld-us14-activity",
+     "lld-us14-state"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-14.1",
+     "name": "IMPS success",
+     "given": "a registered beneficiary",
+     "when": "the customer sends INR 20,000 and confirms with OTP",
+     "then": "status is Success with an IMPS reference within 30 seconds"
+    },
+    {
+     "key": "AT-14.2",
+     "name": "Above IMPS limit",
+     "given": "an amount of INR 6,00,000",
+     "when": "the customer submits",
+     "then": "\"IMPS limit is INR 5,00,000\" is shown"
+    }
+   ]
+  },
+  {
+   "key": "US15",
+   "epic": "EP4",
+   "summary": "Send money by NEFT or RTGS",
+   "story": "As a business customer, I want to pay large amounts by NEFT or RTGS, so that I can pay suppliers.",
+   "points": 8,
+   "sprint": "",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR9",
+    "NB-SR10"
+   ],
+   "lld": {
+    "key": "LLD-US15",
+    "module": "transfers/neft_rtgs.ts",
+    "text": "Mode chosen by the customer; amount below INR 2,00,000 offers NEFT only.",
+    "diagrams": [
+     "lld-us15-class",
+     "lld-us15-sequence",
+     "lld-us15-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-15.1",
+     "name": "RTGS minimum",
+     "given": "an amount of INR 1,50,000 with RTGS chosen",
+     "when": "the customer submits",
+     "then": "\"RTGS needs at least INR 2,00,000\" is shown"
+    }
+   ]
+  },
+  {
+   "key": "US16",
+   "epic": "EP4",
+   "summary": "Enforce the daily transfer limit",
+   "story": "As a bank risk officer, I want third-party transfers capped per day, so that a stolen login cannot empty an account.",
+   "points": 3,
+   "sprint": "NetBank Sprint 3",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR10"
+   ],
+   "lld": {
+    "key": "LLD-US16",
+    "module": "transfers/limit_service.ts",
+    "text": "Sum of successful and pending third-party transfers since midnight IST.",
+    "diagrams": [
+     "lld-us16-class",
+     "lld-us16-sequence",
+     "lld-us16-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-16.1",
+     "name": "Limit reached",
+     "given": "INR 9,50,000 transferred today",
+     "when": "the customer sends INR 1,00,000",
+     "then": "\"Daily limit exceeded\" is shown"
+    }
+   ]
+  },
+  {
+   "key": "US17",
+   "epic": "EP5",
+   "summary": "Add a beneficiary",
+   "story": "As a retail customer, I want to add a payee with account number and IFSC, so that I can send money to them.",
+   "points": 5,
+   "sprint": "NetBank Sprint 2",
+   "status": "To verify",
+   "requirements": [
+    "NB-SR11"
+   ],
+   "lld": {
+    "key": "LLD-US17",
+    "module": "beneficiaries/add.ts",
+    "text": "Account number entered twice. Name check through IMPS penny-drop is a later story.",
+    "diagrams": [
+     "lld-us17-class",
+     "lld-us17-sequence",
+     "lld-us17-activity",
+     "lld-us17-state"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-17.1",
+     "name": "Valid IFSC",
+     "given": "IFSC SBIN0001234",
+     "when": "the customer adds the payee and confirms with OTP",
+     "then": "the payee is active with a cap of INR 50,000 for 24 hours"
+    },
+    {
+     "key": "AT-17.2",
+     "name": "Unknown IFSC",
+     "given": "IFSC ABCD0000000",
+     "when": "the customer adds the payee",
+     "then": "\"Unknown IFSC code\" is shown"
+    }
+   ]
+  },
+  {
+   "key": "US18",
+   "epic": "EP5",
+   "summary": "Delete a beneficiary",
+   "story": "As a retail customer, I want to remove a payee I no longer use, so that my list stays short.",
+   "points": 2,
+   "sprint": "",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR11"
+   ],
+   "lld": {
+    "key": "LLD-US18",
+    "module": "beneficiaries/delete.ts",
+    "text": "Soft delete; kept 8 years for audit.",
+    "diagrams": [
+     "lld-us18-class",
+     "lld-us18-sequence",
+     "lld-us18-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-18.1",
+     "name": "Deleted",
+     "given": "a payee with no pending transfer",
+     "when": "the customer deletes it",
+     "then": "it disappears from the list"
+    }
+   ]
+  },
+  {
+   "key": "US19",
+   "epic": "EP6",
+   "summary": "Pay an electricity bill",
+   "story": "As a retail customer, I want to pay my electricity bill online, so that I avoid queues.",
+   "points": 5,
+   "sprint": "",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR7"
+   ],
+   "lld": {
+    "key": "LLD-US19",
+    "module": "bills/pay.ts",
+    "text": "Bill fetched from BBPS; payment debits the chosen account.",
+    "diagrams": [
+     "lld-us19-class",
+     "lld-us19-sequence",
+     "lld-us19-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-19.1",
+     "name": "Bill paid",
+     "given": "consumer number 123456789 with a bill of INR 2,340",
+     "when": "the customer pays it",
+     "then": "the biller confirms and a receipt is shown"
+    }
+   ]
+  },
+  {
+   "key": "US20",
+   "epic": "EP6",
+   "summary": "Get an alert on every debit",
+   "story": "As a retail customer, I want an SMS and e-mail for every debit, so that I spot fraud early.",
+   "points": 3,
+   "sprint": "NetBank Sprint 3",
+   "status": "ToDo",
+   "requirements": [
+    "NB-SR12"
+   ],
+   "lld": {
+    "key": "LLD-US20",
+    "module": "alerts/debit_listener.ts",
+    "text": "Consumes CBS debit events from a queue; retries SMS 3 times.",
+    "diagrams": [
+     "lld-us20-class",
+     "lld-us20-sequence",
+     "lld-us20-activity"
+    ]
+   },
+   "scenarios": [
+    {
+     "key": "AT-20.1",
+     "name": "SMS within 60 s",
+     "given": "any debit of INR 10,000",
+     "when": "the debit is posted",
+     "then": "an SMS and e-mail with amount, last 4 digits, and balance arrive within 60 seconds"
+    }
+   ]
+  }
+ ]
+}

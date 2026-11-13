@@ -1,0 +1,18 @@
+@startuml lld-us2-activity
+title LLD-US2 Confirm login with an OTP: activity diagram
+skinparam monochrome true
+start
+:Receive OTP;
+if (Within 3 minutes?) then (yes)
+else (no)
+  :Show "OTP expired";
+  stop
+endif
+if (OTP correct?) then (yes)
+else (no)
+  :Count failure;
+  stop
+endif
+:Create session;
+stop
+@enduml

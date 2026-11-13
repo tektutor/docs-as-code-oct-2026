@@ -1,0 +1,13 @@
+@startuml lld-us3-sequence
+title LLD-US3 End the session after 5 idle minutes: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant SessionFilter
+participant SessionStore
+Browser -> SessionFilter : GET /accounts
+SessionFilter -> SessionStore : lastActivity(token)
+SessionFilter -> SessionFilter : idle 5 min 2 s
+SessionFilter -> SessionStore : expire(token)
+SessionFilter --> Browser : 401, login page
+@enduml

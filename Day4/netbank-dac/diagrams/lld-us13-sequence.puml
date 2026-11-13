@@ -1,0 +1,12 @@
+@startuml lld-us13-sequence
+title LLD-US13 Transfer between my own accounts: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant TransferService
+participant CbsAdapter
+Browser -> TransferService : POST /transfers/own
+TransferService -> CbsAdapter : post(debit, credit)
+CbsAdapter --> TransferService : ref 7781
+TransferService --> Browser : success, ref 7781
+@enduml

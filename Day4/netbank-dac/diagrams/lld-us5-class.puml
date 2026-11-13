@@ -1,0 +1,18 @@
+@startuml lld-us5-class
+title LLD-US5 See all accounts and balances: class diagram
+skinparam monochrome true
+hide empty members
+class AccountController <<controller>> {
+  + list()
+}
+class AccountService <<service>> {
+  - cache 30 s
+  + accounts(cust)
+}
+class CbsAdapter <<adapter>> {
+  + accounts(cust)
+  + balance(acc)
+}
+AccountController --> AccountService
+AccountService --> CbsAdapter
+@enduml

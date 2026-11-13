@@ -1,0 +1,6 @@
+name,pre_action,action,expected
+AT-15.2 NEFT any amount,"Given a registered beneficiary and an amount of INR 25,000 with NEFT chosen.",The customer submits and confirms with OTP.,The transfer is accepted with a NEFT reference.
+AT-15.3 RTGS at the minimum,"Given an amount of INR 2,00,000 with RTGS chosen.",The customer submits and confirms with OTP.,The transfer is accepted with an RTGS reference.
+AT-15.4 NEFT offered only,"Given an amount of INR 1,50,000.",The customer opens the mode list.,Only NEFT can be chosen.
+AT-15.5 Daily limit with RTGS,"Given INR 9,00,000 transferred today.","The customer sends INR 2,00,000 by RTGS.","""Daily limit exceeded"" is shown."
+AT-15.6 Wrong OTP,"Given a NEFT transfer waiting for OTP.",The customer enters a wrong OTP 3 times.,The transfer is cancelled and nothing is posted.

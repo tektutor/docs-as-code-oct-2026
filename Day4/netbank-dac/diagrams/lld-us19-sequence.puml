@@ -1,0 +1,13 @@
+@startuml lld-us19-sequence
+title LLD-US19 Pay an electricity bill: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant PaymentService
+participant BbpsClient
+Browser -> PaymentService : GET /bills?no=123456789
+PaymentService -> BbpsClient : fetch()
+Browser -> PaymentService : POST /bills/pay
+PaymentService -> BbpsClient : pay()
+PaymentService --> Browser : receipt
+@enduml

@@ -1,0 +1,14 @@
+@startuml lld-us19-class
+title LLD-US19 Pay an electricity bill: class diagram
+skinparam monochrome true
+hide empty members
+class PaymentService <<service>> {
+  + fetch(biller, no)
+  + pay(bill)
+}
+class BbpsClient <<adapter>> {
+  + fetch()
+  + pay()
+}
+PaymentService --> BbpsClient
+@enduml

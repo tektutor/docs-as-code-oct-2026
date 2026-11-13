@@ -1,0 +1,12 @@
+@startuml lld-us12-sequence
+title LLD-US12 Receive a monthly e-statement: sequence diagram
+skinparam monochrome true
+autonumber
+participant Scheduler
+participant MonthEndJob
+participant StatementService
+participant MailGateway
+Scheduler -> MonthEndJob : run()
+MonthEndJob -> StatementService : pdf(acc, month)
+MonthEndJob -> MailGateway : send(pdf)
+@enduml

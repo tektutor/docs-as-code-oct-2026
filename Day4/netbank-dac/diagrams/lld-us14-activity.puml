@@ -1,0 +1,20 @@
+@startuml lld-us14-activity
+title LLD-US14 Send money by IMPS: activity diagram
+skinparam monochrome true
+start
+:Enter beneficiary and amount;
+if (Within IMPS and daily limit?) then (yes)
+else (no)
+  :Show limit error;
+  stop
+endif
+:Send OTP;
+if (OTP correct?) then (yes)
+else (no)
+  :Fail after 3 tries;
+  stop
+endif
+:Send to IMPS switch;
+:Show IMPS reference;
+stop
+@enduml

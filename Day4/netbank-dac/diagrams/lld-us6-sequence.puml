@@ -1,0 +1,12 @@
+@startuml lld-us6-sequence
+title LLD-US6 View Savings account details: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant AccountService
+participant CbsAdapter
+Browser -> AccountService : GET /accounts/{id}
+AccountService -> CbsAdapter : details(id)
+CbsAdapter --> AccountService : savings data
+AccountService --> Browser : masked details
+@enduml

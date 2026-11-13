@@ -1,0 +1,17 @@
+@startuml lld-us10-class
+title LLD-US10 Get a statement for a date range: class diagram
+skinparam monochrome true
+hide empty members
+class StatementController <<controller>> {
+  + get(acc, from, to)
+}
+class StatementService <<service>> {
+  + query()
+}
+class RangeValidator <<component>> {
+  - maxMonths = 12
+  + check(from, to)
+}
+StatementController --> RangeValidator
+StatementController --> StatementService
+@enduml

@@ -1,0 +1,12 @@
+@startuml lld-us16-sequence
+title LLD-US16 Enforce the daily transfer limit: sequence diagram
+skinparam monochrome true
+autonumber
+participant TransferService
+participant LimitService
+participant TransferRepo
+TransferService -> LimitService : check(cust, 100000)
+LimitService -> TransferRepo : sumToday(cust)
+TransferRepo --> LimitService : 950000
+LimitService --> TransferService : rejected
+@enduml

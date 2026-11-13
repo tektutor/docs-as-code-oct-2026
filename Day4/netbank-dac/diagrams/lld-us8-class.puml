@@ -1,0 +1,14 @@
+@startuml lld-us8-class
+title LLD-US8 View Personal loan details: class diagram
+skinparam monochrome true
+hide empty members
+class LoanAccount <<entity>> {
+  emi, outstanding
+  nextDue
+  + remaining()
+}
+class AccountService <<service>> {
+  + details(id)
+}
+AccountService --> LoanAccount : builds
+@enduml

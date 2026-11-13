@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>1 Result</h2>
+<table class="totals"><tr><th>Passed</th><th>Failed</th><th>Blocked</th><th>Not run</th><th>Total</th></tr>
+<tr><td>{{ count.PASSED }}</td><td>{{ count.FAILED }}</td><td>{{ count.BLOCKED }}</td><td>{{ count["NOT RUN"] }}</td><td>{{ tests|length }}</td></tr></table>
+{% if count.FAILED %}<p><b>Verdict: not ready for release.</b> {{ count.FAILED }} acceptance test(s) failed.</p>
+{% elif count["NOT RUN"] %}<p><b>Verdict: incomplete.</b> Some tests did not run.</p>
+{% else %}<p><b>Verdict: all acceptance tests passed.</b></p>{% endif %}
+<p>The tests are the pytest files in <code>tests/acceptance</code>. Each test name carries the key of its
+Codebeamer test case, for example <code>test_AT_14_1_imps_success</code> runs AT-14.1.</p>
+
+{% if count.FAILED %}
+<h2>2 Failed tests</h2>
+{% for t in tests if t.result == "FAILED" %}
+<div class="box"><h3>{{ t.key }} {{ t.name }} (story {{ t.story }})</h3>
+<p><b>Given</b> {{ t.given }}, <b>when</b> {{ t.when }}, <b>then</b> {{ t.then }}.</p>
+<p class="mono">{{ t.message }}</p></div>
+{% endfor %}
+{% endif %}
+
+<h2>{{ 3 if count.FAILED else 2 }} All tests</h2>
+<table><thead><tr><th>Test</th><th>Story</th><th>Scenario</th><th>Result</th></tr></thead>
+{% for t in tests %}<tr><td>{{ t.key }}</td><td>{{ t.story }}</td><td>{{ t.name }}</td>
+<td class="{{ t.result|replace(' ', '-') }}">{{ t.result }}</td></tr>{% endfor %}</table>
+{% endblock %}

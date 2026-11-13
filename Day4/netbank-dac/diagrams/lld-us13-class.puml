@@ -1,0 +1,12 @@
+@startuml lld-us13-class
+title LLD-US13 Transfer between my own accounts: class diagram
+skinparam monochrome true
+hide empty members
+class TransferService <<service>> {
+  + own(from, to, amt)
+}
+class CbsAdapter <<adapter>> {
+  + post(debit, credit)
+}
+TransferService --> CbsAdapter
+@enduml

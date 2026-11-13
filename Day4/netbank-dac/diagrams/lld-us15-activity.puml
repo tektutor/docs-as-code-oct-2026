@@ -1,0 +1,14 @@
+@startuml lld-us15-activity
+title LLD-US15 Send money by NEFT or RTGS: activity diagram
+skinparam monochrome true
+start
+:Read mode and amount;
+if (Amount allowed for mode?) then (yes)
+else (no)
+  :Show "RTGS needs at least INR 2,00,000";
+  stop
+endif
+:Send to gateway;
+:Show UTR number;
+stop
+@enduml

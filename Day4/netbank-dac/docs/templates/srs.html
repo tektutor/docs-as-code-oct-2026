@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>1 Purpose</h2>
+<p>{{ d.release.desc }}</p>
+<p>This document lists the system requirements of {{ d.release.name }}. Each requirement has a key
+(for example NB-SR8) that is also the start of its name in the Codebeamer tracker
+"System Requirement Specifications".</p>
+
+<h2>2 Summary</h2>
+<table><thead><tr><th>Key</th><th>Requirement</th><th>Status</th><th>Codebeamer ID</th></tr></thead>
+{% for r in d.requirements %}<tr><td>{{ r.key }}</td><td>{{ r.summary }}</td><td>{{ r.status }}</td>
+<td>{{ r.cb_id or "not linked" }}</td></tr>{% endfor %}</table>
+
+<h2>3 Requirements</h2>
+{% for r in d.requirements %}
+<div class="box">
+<h3>{{ r.key }} {{ r.summary }}</h3>
+<p>{{ r.text }}</p>
+<p class="small"><b>Rationale:</b> {{ r.rationale }}</p>
+<p class="small"><b>Status:</b> {{ r.status }} · <b>Stories:</b>
+{% for s in r.stories %}{{ s.key }}{% if not loop.last %}, {% endif %}{% else %}none{% endfor %}</p>
+</div>
+{% endfor %}
+
+<h2>4 Epics</h2>
+<table><thead><tr><th>Key</th><th>Epic</th><th>Goal</th><th>Measure of success</th></tr></thead>
+{% for e in d.epics %}<tr><td>{{ e.key }}</td><td>{{ e.summary }}</td><td>{{ e.goal }}</td><td>{{ e.measure }}</td></tr>{% endfor %}
+</table>
+{% endblock %}

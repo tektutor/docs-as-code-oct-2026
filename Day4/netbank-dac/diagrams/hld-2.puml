@@ -1,0 +1,14 @@
+@startuml hld-2
+title HLD-2 Accounts overview architecture
+skinparam monochrome true
+left to right direction
+component "Web UI\noverview page" as Web_UI
+component "API gateway" as API_gateway
+component "Account service\naccount list\n30 s cache" as Account_service
+component "CBS adapter\nmaps CBS codes" as CBS_adapter
+node "Core banking system\nSavings, Current,\nloan ledgers" as Core_banking_system <<external>>
+Web_UI --> API_gateway : HTTPS
+API_gateway --> Account_service
+Account_service --> CBS_adapter
+CBS_adapter --> Core_banking_system
+@enduml

@@ -1,0 +1,15 @@
+@startuml lld-us1-sequence
+title LLD-US1 Log in with customer ID and password: sequence diagram
+skinparam monochrome true
+autonumber
+participant Browser
+participant LoginController
+participant AuthService
+participant CustomerRepo
+Browser -> LoginController : POST /login
+LoginController -> AuthService : checkPassword()
+AuthService -> CustomerRepo : find(10023456)
+CustomerRepo --> AuthService : hash
+AuthService --> LoginController : true
+LoginController --> Browser : 302 to OTP page
+@enduml

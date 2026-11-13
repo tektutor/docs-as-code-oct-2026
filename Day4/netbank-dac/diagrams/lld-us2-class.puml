@@ -1,0 +1,18 @@
+@startuml lld-us2-class
+title LLD-US2 Confirm login with an OTP: class diagram
+skinparam monochrome true
+hide empty members
+class OtpService <<service>> {
+  - store: OtpStore
+  + send(mobile)
+  + check(id, otp): bool
+}
+class OtpStore <<repository>> {
+  hash, expiresAt
+}
+class SmsGateway <<external>> {
+  + send(no, text)
+}
+OtpService --> OtpStore
+OtpService --> SmsGateway : sends
+@enduml

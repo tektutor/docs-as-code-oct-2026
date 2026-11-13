@@ -1,0 +1,14 @@
+@startuml lld-us1-activity
+title LLD-US1 Log in with customer ID and password: activity diagram
+skinparam monochrome true
+start
+:Read customer ID and password;
+if (Password matches?) then (yes)
+else (no)
+  :Increase failed count, show error;
+  stop
+endif
+:Create pre-session;
+:Open OTP page;
+stop
+@enduml

@@ -1,0 +1,17 @@
+@startuml lld-us17-class
+title LLD-US17 Add a beneficiary: class diagram
+skinparam monochrome true
+hide empty members
+class BeneficiaryService <<service>> {
+  + add(cust, acc, ifsc)
+}
+class IfscDirectory <<external>> {
+  + lookup(ifsc)
+}
+class Beneficiary <<entity>> {
+  acc, ifsc
+  addedAt, cap
+}
+BeneficiaryService --> IfscDirectory
+BeneficiaryService --> Beneficiary : creates
+@enduml

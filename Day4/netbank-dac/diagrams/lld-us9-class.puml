@@ -1,0 +1,13 @@
+@startuml lld-us9-class
+title LLD-US9 See a mini statement: class diagram
+skinparam monochrome true
+hide empty members
+class StatementService <<service>> {
+  + query(acc, from, to, limit)
+}
+class Transaction <<entity>> {
+  date, text,
+  amount, balance
+}
+StatementService --> Transaction : returns
+@enduml
